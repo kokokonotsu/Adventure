@@ -2,6 +2,26 @@
     --background-color: #111111;
     --font-color: #0c0;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+  /* Track */
+::-webkit-scrollbar-track {
+    background: var(--background-color); 
+}
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--font-color);
+    opacity: 0.5;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+}
 html{
     height: 100vh;
     width: 100vw;
@@ -15,6 +35,7 @@ body{
     height: 100%;
     width: 100%;
     margin: 0;
+
 }
 main{
     height: 70%;
@@ -31,6 +52,29 @@ main{
 }
 #scene-description{
     padding-left: 5px;
+    padding-top: 1em;
+    margin: 0;
+    width: 80%;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+    display: inline-block;
+}
+#status-bar{
+    float: right;
+    height: 100%;
+    width: 200px;
+    border-left: 1px solid var(--font-color);
+}
+#data-bar{
+    width: 100%;
+    
+}
+#minimap{
+    width: 100%;
+    height: 200px;
+    border-bottom: 1px solid var(--font-color);
 }
 #input-form{
     height: 60%;

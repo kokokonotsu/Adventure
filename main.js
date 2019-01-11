@@ -2,20 +2,157 @@ const locations = {
     current_location: "",
     current_room: "room",
     home: {
-        my_room: "my room",
-        bedroom_hallway: "bedroom hallway",
-        kitchen: "kitchen",
-        living_room: "living room"
+        my_room: { name:"my room", visited: true,
+            minimap_image: {
+                door_closed_with_pillow_quilt_blanket: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_closed_with_quilt_blanket: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_closed_with_blanket: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_closed: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open_with_pillow_quilt_blanket:
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open_with_quilt_blanket:
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open_with_blanket:
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open:
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`
+            }
+        },
+        bedroom_hallway: { name: "bedroom hallway", visited: false },
+        kitchen: { name: "kitchen", visited: false },
+        living_room: { name: "living room", visited: false },
+        court_yard: { name: "court yard", visited: false },
+        servants_quarters: { name: `servant's quarters`, visited: false },
     },
-    set set_current_location(new_location){
+    set_current_location: function(new_location){
         this.current_location = new_location;
+    },
+}
+const minimap = {
+    minimap: document.getElementById("minimap"),
+    draw_minimap: function(minimap_image){
+        minimap.minimap.innerHTML = minimap_image;
     }
 }
 const descriptions =  {
     look_description: {
         home: {
             my_room: {
-                look: ["You are in a room about 15' by 10', with a double bed in the corner.\n", 
+                look: ["You are in a room about 15' by 10', with a queen sized bed in the corner.\n", 
                 "There is a window by the bed, large enough for you to climb through if need be, but you don't see a reason for doing that.\n",
                 "There is a door fixed in the wall opposite the window.\n", 
                 "There are two book selves in the room lining the wall to the right of the door.\n"],
@@ -251,9 +388,14 @@ function checkInput(){
                         case scenes.scene.home.my_room.door:{
                             if(scenes.scene.home.my_room.door_unlocked == false){
                                 description.innerText = descriptions.action_description.home.my_room.open.door_locked;
-                            } else if(scenes.scene.home.my_room.door_unlocked == true){
+                            } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == false){
                                 description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
+                            } else if (scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == false){
+                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
                             }
                             break;
                         }
@@ -271,14 +413,26 @@ function checkInput(){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.items.pillow:{
-                            if(inventory.pillow.taken == false){
+                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
                                 description.innerText += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket)
                                 let newItem = document.createElement("li");
                                 let newNode = document.createTextNode("Pillow");
                                 newItem.appendChild(newNode);
                                 inventory_list.appendChild(newItem);
-                            } else {
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
+                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt_blanket)
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Pillow");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
+                                
+                            }
+                            else {
                                 description.innerText += "\nYou've already taken this item.\n";
                             }
                             break;
@@ -346,8 +500,9 @@ function checkInput(){
                         case scenes.scene.home.my_room.door:{
                             if(scenes.scene.home.my_room.door_open == true){
                                 locations.set_current_location(locations.home.bedroom_hallway);
+                                locations.home.bedroom_hallway.visited = true;
                                 description.innerText = descriptions.look_description.home.bedroom_hallway.look;
-                                console.log("I am running");
+                                console.log(locations.home.bedroom_hallway.visited);
                                 break;
                             } else if (scenes.scene.home.my_room.door_open == false){
                                 description.innerText = descriptions.look_description.home.my_room.door_closed_message;
@@ -368,7 +523,7 @@ function checkInput(){
             description.innerText += "\n" + text_input.value + " is an invalid command";
         }
     }
-    command_history.innerText += "\n" + text_input.value;
+    command_history.innerText += text_input.value + "\n";
     text_input.value = "";
 };
 document.getElementById("text-input").addEventListener("keyup", function(e){e.preventDefault(); if(e.keyCode === 13){ checkInput(); }; });
@@ -376,6 +531,9 @@ document.getElementById("enter-button").addEventListener("click", checkInput);
 window.addEventListener("load", () => { 
     for(let i = 0; i < story_dialogue.home.start.length; i++){
         document.getElementById("scene-description").innerText += story_dialogue.home.start[i].toString();
+    }
+    if(scenes.scene.home.my_room.door_open == false && scenes.scene.home.my_room.door_unlocked == false && inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false){
+        minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
     }
     locations.current_location = locations.home.my_room; 
 });
