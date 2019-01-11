@@ -6,6 +6,9 @@ const locations = {
         bedroom_hallway: "bedroom hallway",
         kitchen: "kitchen",
         living_room: "living room"
+    },
+    set set_current_location(new_location){
+        this.current_location = new_location;
     }
 }
 const descriptions =  {
@@ -336,13 +339,13 @@ function checkInput(){
             }
         break;
         }
-        case actions.movement.go || actions.movement.move:{
+        case actions.movement.go || "Go":{
             switch(locations.current_location){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door:{
                             if(scenes.scene.home.my_room.door_open == true){
-                                locations.current_location = locations.home.bedroom_hallway;
+                                locations.set_current_location(locations.home.bedroom_hallway);
                                 description.innerText = descriptions.look_description.home.bedroom_hallway.look;
                                 console.log("I am running");
                                 break;
