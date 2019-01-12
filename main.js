@@ -23,10 +23,41 @@ const locations = {
                     <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
                     <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
                     <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_closed_with_pillow_blanket: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
                 door_closed_with_quilt_blanket: 
                     `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_closed_with_pillow_quilt: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
                         <g id="pillows">
                             <g id="pillow-1">
@@ -46,6 +77,37 @@ const locations = {
                     `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_closed_with_pillow: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_closed_with_quilt: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
                         <g id="pillows">
                             <g id="pillow-2">
                                 <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
@@ -103,10 +165,77 @@ const locations = {
                     <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
                     <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
                     <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open_with_pillow_blanket: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open_with_pillow_quilt: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
                 door_open_with_blanket:
                     `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                        <g id="pillows">
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open_with_pillow: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                        <g id="pillows">
+                            <g id="pillow-1">
+                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                            <g id="pillow-2">
+                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                            </g>
+                        </g>
+                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
+                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
+                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                door_open_with_quilt: 
+                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
+                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
                         <g id="pillows">
                             <g id="pillow-2">
                                 <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
@@ -396,7 +525,31 @@ function checkInput(){
                                 description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
-                            }
+                            } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == false){
+                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
+                            } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == true){
+                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
+                            } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == true && inventory.blanket.taken == false){
+                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
+                            } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == true){
+                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
+                            } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == true){
+                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
+                            } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true  && inventory.pillow.taken == true && inventory.blanket.taken == true){
+                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                scenes.scene.home.my_room.door_open = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
+                            } 
                             break;
                         }
                         default:{
@@ -413,24 +566,78 @@ function checkInput(){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.items.pillow:{
-                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
                                 description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt_blanket);
                                 inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket)
                                 let newItem = document.createElement("li");
                                 let newNode = document.createTextNode("Pillow");
                                 newItem.appendChild(newNode);
                                 inventory_list.appendChild(newItem);
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
+                                console.log("I am running");
+                                console.log(inventory.pillow.taken + " " + inventory.quilt.taken + " " + inventory.blanket.taken);
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
                                 description.innerText += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt_blanket)
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt);
                                 let newItem = document.createElement("li");
                                 let newNode = document.createTextNode("Pillow");
                                 newItem.appendChild(newNode);
                                 inventory_list.appendChild(newItem);
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
+                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Pillow");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
+                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_blanket);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Pillow");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Pillow");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Pillow");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Pillow");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                inventory.pillow.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Pillow");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
                             }
                             else {
                                 description.innerText += "\nYou've already taken this item.\n";
@@ -438,31 +645,159 @@ function checkInput(){
                             break;
                         }
                         case scenes.scene.home.my_room.items.quilt:{
-                            if(inventory.quilt.taken == false && inventory.bag.taken == true){
+                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
                                 description.innerText += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_blanket);
                                 let newItem = document.createElement("li");
                                 let newNode = document.createTextNode("Quilt");
                                 newItem.appendChild(newNode);
                                 inventory_list.appendChild(newItem);
-                            } else if(inventory.quilt.taken == false && inventory.bag.taken == false){
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
                                 description.innerText += descriptions.action_description.home.my_room.take.quilt;
-                            } else {
+                                inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Quilt");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
+                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Quilt");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
+                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_blanket);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Quilt");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Quilt");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Quilt");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Quilt");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                inventory.quilt.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Quilt");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            }
+                            else {
                                 description.innerText += "\nYou've already taken this item.\n";
                             }
                             break;
                         }
                         case scenes.scene.home.my_room.items.blanket:{
-                            if(inventory.blanket.taken == false && inventory.bag.taken == true){
+                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
                                 description.innerText += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt);
                                 let newItem = document.createElement("li");
                                 let newNode = document.createTextNode("Blanket");
                                 newItem.appendChild(newNode);
                                 inventory_list.appendChild(newItem);
-                            } else if(inventory.blanket.taken == false && inventory.bag.taken == false){
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
                                 description.innerText += descriptions.action_description.home.my_room.take.blanket;
-                            } else {
+                                inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Blanket");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
+                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Blanket");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
+                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Blanket");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Blanket");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Blanket");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Blanket");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
+                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                inventory.blanket.taken = true;
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
+                                let newItem = document.createElement("li");
+                                let newNode = document.createTextNode("Blanket");
+                                newItem.appendChild(newNode);
+                                inventory_list.appendChild(newItem);
+                                console.log("I am running");
+                            }
+                            else {
                                 description.innerText += "\nYou've already taken this item.\n";
                             }
                             break;
