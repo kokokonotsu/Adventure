@@ -1,0 +1,7 @@
+<svg id="minimap">
+<rect x="60" y="10" width="80" height="180" style="stroke-width: 1; stroke:#0c0; fill:#111111;"/>
+<rect x="80" y="9" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
+<rect x="80" y="189" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
+<rect x="59" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: transparent;"/>
+<rect x="139" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: #111111;"/>
+</svg>

@@ -26,7 +26,8 @@ const locations = {
                 door_closed_with_pillow_blanket: 
                     `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
                     <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>                        <g id="pillows">
+                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
+                    <g id="pillows">
                             <g id="pillow-1">
                                 <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
                                 <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
@@ -344,8 +345,7 @@ const story_dialogue = {
     home: {
         start:["As the sunlight from mid-morning peeks over the mountains and through the window, your eyes open. You are lying on a bed in a decently sized room.\n", 
         "This is your home.\n", "You fell asleep last night after putting your younger siblings to bed, and now you awaken from your sleep, just the same as every other day.\n", 
-        "You've never had mountains even remotely near your house, and yet there they are, standing resolutely, unmoving, real.\n", 
-        "\"Where am I?\"\n"]
+        "Time to get to work.\n"]
     }
 };
 const scenes = {
@@ -907,7 +907,7 @@ window.addEventListener("load", () => {
         document.getElementById("scene-description").innerText += story_dialogue.home.start[i].toString();
     }
     if(scenes.scene.home.my_room.door_open == false && scenes.scene.home.my_room.door_unlocked == false && inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false){
-        minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
+        readText("file:///C:/xampp/htdocs/Adventure/assets/door_closed_with_pillow_quilt_blanket.txt");
     }
     locations.current_location = locations.home.my_room; 
 });
