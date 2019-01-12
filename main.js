@@ -261,7 +261,16 @@ const locations = {
                     <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`
             }
         },
-        bedroom_hallway: { name: "bedroom hallway", visited: false },
+        bedroom_hallway: { name: "bedroom hallway", visited: false, 
+            minimap_image: {
+                default: 
+                    `<rect x="60" y="10" width="80" height="180" style="stroke-width: 1; stroke:#0c0; fill:#111111;"/>
+                    <rect x="80" y="9" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
+                    <rect x="80" y="189" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
+                    <rect x="59" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: transparent;"/>
+                    <rect x="139" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: #111111;"/>`
+            }
+        },
         kitchen: { name: "kitchen", visited: false },
         living_room: { name: "living room", visited: false },
         court_yard: { name: "court yard", visited: false },
@@ -298,7 +307,7 @@ const descriptions =  {
                 }
             },
             bedroom_hallway:{
-                look: "You are in a hallway connecting your room with a series of other rooms.\n There are several doors, one across the way from your room to the west, and one at either end of the hall, north and south respectively.\n"
+                look: "You are in a hallway connecting your room with a series of other rooms.\n There are several doors, one across the way from your room to the west, and one at either end of the hall, north and south respectively.\n Your room is to the east.\n"
             },
             living_room:{
                 look: "You are standing in a rather large space, much larger than your room. This is the living room. There is a fireplace set within the wall to the east, an archway leading towards the smell of food to the west, and a hallway to the south.\n",
@@ -359,7 +368,10 @@ const scenes = {
                 look: descriptions.look_description.home.kitchen
             },
             bedroom_hallway:{
-                look: descriptions.look_description.home.bedroom_hallway.look
+                look: descriptions.look_description.home.bedroom_hallway.look,
+                my_bedroom_door: { name: "my bedroom door", cardinal_direction: "east" || "East" },
+                living_room_door: {name: "living room door", cardinal_direction: "south" || "south"},
+
             },
             living_room:{
                 look: descriptions.look_description.home.living_room.look
@@ -837,6 +849,7 @@ function checkInput(){
                                 locations.set_current_location(locations.home.bedroom_hallway);
                                 locations.home.bedroom_hallway.visited = true;
                                 description.innerText = descriptions.look_description.home.bedroom_hallway.look;
+                                minimap.draw_minimap(locations.home.bedroom_hallway.minimap_image.default);
                                 console.log(locations.home.bedroom_hallway.visited);
                                 break;
                             } else if (scenes.scene.home.my_room.door_open == false){
@@ -844,12 +857,38 @@ function checkInput(){
                                 console.log("I am running");
                                 break;
                             }
+                            break;
                         }
                         default:{
                             description.innerText = "Go where?";
                         }
                     }
                     break;
+                }
+                case locations.home.bedroom_hallway:{
+                    switch(input[1]){
+                        case scenes.scene.home.bedroom_hallway.my_bedroom_door.cardinal_direction:{
+                            locations.set_current_location(locations.home.my_room);
+                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == false){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == true){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
+                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == true){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
+                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == true){
+                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
+                            }
+                            break;
+                        }
+                    }
                 }
             }
             break;
