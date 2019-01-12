@@ -1,7 +1,8 @@
-<svg id="minimap">
-<rect x="60" y="10" width="80" height="180" style="stroke-width: 1; stroke:#0c0; fill:#111111;"/>
-<rect x="80" y="9" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
-<rect x="80" y="189" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
-<rect x="59" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: transparent;"/>
-<rect x="139" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: #111111;"/>
+<?xml version="1.0" standalone="yes"?>
+<svg id="minimap" xmlns="http://www.w3.org/2000/svg">
+<rect id="hallway" x="60" y="10" width="80" height="180" style="fill: #111111; stroke: #00cc00; stroke-width: 1"/>
+<rect id="north-door" x="80" y="9" width="40" height="2" style="fill: transparent; stroke: #00cc00; stroke width: 1"/>
+<rect id="south-door" x="80" y="189" width="40" height="2" style="fill: transparent; stroke: #00cc00; stroke width: 1"/>
+<rect id="east-door" x="59" y="80" width="2" height="40" style="fill: transparent; stroke: #00cc00; stroke-width: 1"/>
+<rect id="west-door" x="139" y="80" width="2" height="40" style="fill: #111111; stroke: #00cc00; stroke-width: 1"/>
 </svg>

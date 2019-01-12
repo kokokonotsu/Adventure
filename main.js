@@ -5,271 +5,43 @@ const locations = {
         my_room: { name:"my room", visited: true,
             minimap_image: {
                 door_closed_with_pillow_quilt_blanket: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_pillow_quilt_blanket.svg",
                 door_closed_with_pillow_blanket: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                    <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_pillow_blanket.svg",
                 door_closed_with_quilt_blanket: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_quilt_blanket.svg",
                 door_closed_with_pillow_quilt: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_pillow_quilt.svg",
                 door_closed_with_blanket: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_blanket.svg",
                 door_closed_with_pillow: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                        <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_pillow.svg",
                 door_closed_with_quilt: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_quilt.svg",
                 door_closed: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect x="9" y="80" width="2" height="40" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_closed_with_quilt.svg",
                 door_open_with_pillow_quilt_blanket:
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_open_with_pillow_quilt_blanket.svg",
                 door_open_with_quilt_blanket:
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_open_with_quilt_blanket.svg",
                 door_open_with_pillow_blanket: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_open_with_pillow_blanket.svg",
                 door_open_with_pillow_quilt: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_open_with_pillow_quilt.svg",
                 door_open_with_blanket:
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="blanket" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_open_with_blanket.svg",
                 door_open_with_pillow: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                        <g id="pillows">
-                            <g id="pillow-1">
-                                <rect x="131" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="131" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_open_with_pillow.svg",
                 door_open_with_quilt: 
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="quilt" x="129" y="109" width="60" height="55" style="fill:#0c0; stroke:#0c0; stroke-dasharray: 5 5; stroke-width:3; opacity: 0.5"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`,
+                    "assets/home/my_bedroom/door_open_with_quilt.svg",
                 door_open:
-                    `<rect x="10" y="10" width="180" height="180" style="fill:#111111; stroke:#0c0; stroke-width:1"/>
-                    <rect id="bed-frame" x="129" y="109" width="60" height="80" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                        <g id="pillows">
-                            <g id="pillow-2">
-                                <rect x="159" y="170" width="28" height="15" style="fill: #111111; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                                <rect x="159" y="170" width="28" height="15" style="fill: #0c0; stroke:#0c0; stroke-width:1; opacity:0.5"/>
-                            </g>
-                        </g>
-                    <rect x="189" y="50" width="2" height="40" style="fill: #111111; stroke:#0c0; stroke-width:1"/>
-                    <polygon points="9,80 30,40 31,41 10,81" style="fill: #0c0; stroke:#0c0; stroke-width:1"/>
-                    <rect x="20" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>
-                    <rect x="80" y="10" width="40" height="10" style="fill:#111111; stroke:#0c0;"/>`
+                    "assets/home/my_bedroom/door_open.svg"
             }
         },
         bedroom_hallway: { name: "bedroom hallway", visited: false, 
             minimap_image: {
                 default: 
-                    `<rect x="60" y="10" width="80" height="180" style="stroke-width: 1; stroke:#0c0; fill:#111111;"/>
-                    <rect x="80" y="9" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
-                    <rect x="80" y="189" width="40" height="2" style="stroke width: 1; stroke: #0c0; fill: transparent;"/>
-                    <rect x="59" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: transparent;"/>
-                    <rect x="139" y="80" width="2" height="40" style="stroke-width: 1; stroke: #0c0; fill: #111111;"/>`
+                    "assets/home/bedroom_hallway/default.svg"
             }
         },
         kitchen: { name: "kitchen", visited: false },
@@ -282,9 +54,9 @@ const locations = {
     },
 }
 const minimap = {
-    minimap: document.getElementById("minimap"),
+    minimap: document.getElementById("minimap-container"),
     draw_minimap: function(minimap_image){
-        minimap.minimap.innerHTML = minimap_image;
+        minimap.minimap.setAttribute("data", minimap_image);
     }
 }
 const descriptions =  {
@@ -907,7 +679,7 @@ window.addEventListener("load", () => {
         document.getElementById("scene-description").innerText += story_dialogue.home.start[i].toString();
     }
     if(scenes.scene.home.my_room.door_open == false && scenes.scene.home.my_room.door_unlocked == false && inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false){
-        readText("file:///C:/xampp/htdocs/Adventure/assets/door_closed_with_pillow_quilt_blanket.txt");
+        minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
     }
     locations.current_location = locations.home.my_room; 
 });
