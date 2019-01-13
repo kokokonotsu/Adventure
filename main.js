@@ -63,29 +63,29 @@ const descriptions =  {
     look_description: {
         home: {
             my_room: {
-                look: ["You are in a room about 15' by 10', with a queen sized bed in the corner.\n", 
-                "There is a window by the bed, large enough for you to climb through if need be, but you don't see a reason for doing that.\n",
-                "There is a door fixed in the wall opposite the window.\n", 
-                "There are two book selves in the room lining the wall to the right of the door.\n"],
-                bed: "It is a queen sized bed, quite large for one person. There are bed sheets, quilts, blankets, and two pillows on the bed. The frame is made of finished oak.",
-                window: "It is a rather large window, large enough for you to climb through if need be, but you don't see a reason for doing that.\n",
-                door_unlocked_closed: "It is a wooden door, of the finest quality.\n The arch of the door allows for enough space for two of you to fit through side by side, and about two heads taller than you are.\n Upon further inspection, the door seems to be unlocked on the inside, your side.\n Everything seems good to go, door ready for doing what doors do best.\n Sitting there waiting to be opened.\n",
-                door_locked_closed: "It is a wooden door, of the finest quality.\n The arch of the door allows for enough space for two of you to fit through side by side, and about two heads taller than you are.\n The door is closed.\n Upon further inspection, the door seems to be locked on the inside, your side.\n Hopefully you didn't try opening the door before unlocking it.\n That would be embarrassing...\n",
-                door_unlocked_opened: "It is a wooden door, of the finest quality.\n The arch of the door allows for enough space for two of you to fit through side by side, and about two heads taller than you are.\n Upon further inspection, the door seems to be unlocked on the inside, your side.\n Everything seems good to go, the door is open, just head on through.\n",
-                door_closed_message: "Where are you trying to go? The door is closed!\n",
+                look: `You are in a room about 15' by 10', with a queen sized bed in the corner.<br>
+                There is a window to the <b>east</b> by the bed, large enough for you to climb through if need be, but you don't see a reason for doing that.<br>
+                There is a door fixed in the wall opposite the window, to the <b>west</b>.<br> 
+                There are two book selves in the room lining the wall to the right of the door.<br>`,
+                bed: "It is a queen sized bed, quite large for one person. There are bed sheets, quilts, blankets, and two pillows on the bed. The frame is made of finished oak.<br>",
+                window: "It is a rather large window, large enough for you to climb through if need be, but you don't see a reason for doing that.<br>",
+                door_unlocked_closed: "It is a wooden door, of the finest quality.<br> The arch of the door allows for enough space for two of you to fit through side by side, and about two heads taller than you are.<br> Upon further inspection, the door seems to be unlocked on the inside, your side.<br> Everything seems good to go, door ready for doing what doors do best.<br> Sitting there waiting to be opened.<br>",
+                door_locked_closed: "It is a wooden door, of the finest quality.<br> The arch of the door allows for enough space for two of you to fit through side by side, and about two heads taller than you are.<br> The door is closed.<br> Upon further inspection, the door seems to be locked on the inside, your side.<br> Hopefully you didn't try opening the door before unlocking it.<br> That would be embarrassing...<br>",
+                door_unlocked_opened: "It is a wooden door, of the finest quality.<br> The arch of the door allows for enough space for two of you to fit through side by side, and about two heads taller than you are.<br> Upon further inspection, the door seems to be unlocked on the inside, your side.<br> Everything seems good to go, the door is open, just head on through.<br>",
+                door_closed_message: "Where are you trying to go? The door is closed!<br>",
                 items: {
-                    pillow: "It's the pillow from your bed, pretty soft.\n Hope that's drool on there.\n",
-                    quilt: "It's an elaborate quilt, of the finest quality.\n You can tell that there has been some love put into this quilt.\n",
-                    blanket: "This is one of the blankets from your bed.\n Still warm.\n Nice.\n"
+                    pillow: "It's the pillow from your bed, pretty soft.<br> Hope that's drool on there.<br>",
+                    quilt: "It's an elaborate quilt, of the finest quality.<br> You can tell that there has been some love put into this quilt.<br>",
+                    blanket: "This is one of the blankets from your bed.<br> Still warm.<br> Nice.<br>"
                 }
             },
             bedroom_hallway:{
-                look: "You are in a hallway connecting your room with a series of other rooms.\n There are several doors, one across the way from your room to the west, and one at either end of the hall, north and south respectively.\n Your room is to the east.\n"
+                look: "You are in a hallway connecting your room with a series of other rooms.<br> There are several doors, one across the way from your room to the west, and one at either end of the hall, north and south respectively.<br> Your room is to the east.<br>"
             },
             living_room:{
-                look: "You are standing in a rather large space, much larger than your room. This is the living room. There is a fireplace set within the wall to the east, an archway leading towards the smell of food to the west, and a hallway to the south.\n",
+                look: "You are standing in a rather large space, much larger than your room. This is the living room. There is a fireplace set within the wall to the east, an archway leading towards the smell of food to the west, and a hallway to the south.<br>",
                 items:{
-                    bag: "\nYou can put stuff in here!\n"
+                    bag: "You can put stuff in here!<br>"
                 }
             }
         }
@@ -94,19 +94,19 @@ const descriptions =  {
         home:{
             my_room:{
                 open:{
-                    door_locked: "You try to open the door by turning knob and pulling.\ It won't budge an inch.\n",
-                    door_unlocked: "You try to open the door by turning the knob and pulling.\ It swings open easily.\n"
+                    door_locked: "You try to open the door by turning knob and pulling.\ It won't budge an inch.<br>",
+                    door_unlocked: "You try to open the door by turning the knob and pulling.\ It swings open easily.<br>"
                 },
                 unlock:{
-                    unlock_door: "\nYou hear a click as you turn the lock to unlock the door."
+                    unlock_door: "You hear a click as you turn the lock to unlock the door."
                 },
                 take:{
-                    pillow: "\nYou take one of the pillows from your bed.\n",
-                    blanket: "\nYou can't take that when you don't have anything to put it in.\n",
-                    quilt: "\nYou can't take that when you don't have anything to put it in.\n",
+                    pillow: "You take one of the pillows from your bed.<br>",
+                    blanket: "You can't take that when you don't have anything to put it in.<br>",
+                    quilt: "You can't take that when you don't have anything to put it in.<br>",
                     bag:{
-                        blanket: "\nYou put one of the blankets from your bed into you bag.\n",
-                        quilt: "\nYou put the quilt from your bed into you bag.\n"
+                        blanket: "You put one of the blankets from your bed into you bag.<br>",
+                        quilt: "You put the quilt from your bed into you bag.<br>"
                     }
                 }
             }
@@ -115,9 +115,12 @@ const descriptions =  {
 };
 const story_dialogue = {
     home: {
-        start:["As the sunlight from mid-morning peeks over the mountains and through the window, your eyes open. You are lying on a bed in a decently sized room.\n", 
-        "This is your home.\n", "You fell asleep last night after putting your younger siblings to bed, and now you awaken from your sleep, just the same as every other day.\n", 
-        "Time to get to work.\n"]
+        start: 
+        `As the sunlight from mid-morning peeks over the mountains and through the window, your eyes open.<br>
+        You are lying on a bed in a decently sized room.<br>
+        This is your home.<br>
+        You fell asleep last night after putting your younger siblings to bed, and now you awaken from your sleep, just the same as every other day.<br>
+        Time to get to work.<br>`
     }
 };
 const scenes = {
@@ -208,82 +211,80 @@ function checkInput(){
         case actions.look || "Look":{
         switch(locations.current_location){
             case locations.home.my_room:{
-                description.innerText = "";
+                description.innerHTML = "";
                 switch(input[1]){
                     case actions.joining.at:{
                         console.log(input[1]);
                         if(input[2] == scenes.scene.home.my_room.bed){
                             console.log(input[2]);
-                            description.innerText = descriptions.look_description.home.my_room.bed;
+                            description.innerHTML = descriptions.look_description.home.my_room.bed;
                             break;
                         } else if (input[2] == scenes.scene.home.my_room.door && scenes.scene.home.my_room.door){
                             if(scenes.scene.home.my_room.door_unlocked == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText = descriptions.look_description.home.my_room.door_locked_closed;
+                                description.innerHTML = descriptions.look_description.home.my_room.door_locked_closed;
                             } else if (scenes.scene.home.my_room.door_unlocked == true && scenes.scene.home.my_room.door_open == false){
-                                description.innerText = descriptions.look_description.home.my_room.door_unlocked_closed;
+                                description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_closed;
                             } else if (scenes.scene.home.my_room.door_unlocked == true && scenes.scene.home.my_room.door_open == true){
-                                description.innerText = descriptions.look_description.home.my_room.door_unlocked_opened;
+                                description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_opened;
                             }
                             break;
                         } else if(input[2] == scenes.scene.home.my_room.window){
-                            description.innerText = descriptions.look_description.home.my_room.window;
+                            description.innerHTML = descriptions.look_description.home.my_room.window;
                             break;
                         } else {
-                            description.innerText = "Nothing to look at.";
+                            description.innerHTML = "Nothing to look at.";
                             console.log(input[2]);
                             break;
                         }
                     }
                     case locations.current_room:{
-                        for(let i = 0; i < descriptions.look_description.home.my_room.look.length; i++){
-                            description.innerText += descriptions.look_description.home.my_room.look[i];
-                        };
+                        description.innerHTML += descriptions.look_description.home.my_room.look;
                         break;
                     }
                     case scenes.scene.home.my_room.window:{
-                        description.innerText = descriptions.look_description.home.my_room.window;
+                        description.innerHTML = descriptions.look_description.home.my_room.window;
                         break;
                     }
                     case scenes.scene.home.my_room.bed:{
-                        description.innerText = descriptions.look_description.home.my_room.bed;
+                        description.innerHTML = descriptions.look_description.home.my_room.bed;
                         break;
                     }
                     case scenes.scene.home.my_room.door:{
                         if(scenes.scene.home.my_room.door_unlocked == false){
-                            description.innerText = descriptions.look_description.home.my_room.door_locked_closed;
+                            description.innerHTML = descriptions.look_description.home.my_room.door_locked_closed;
                         } else if (scenes.scene.home.my_room.door_unlocked == true){
-                            description.innerText = descriptions.look_description.home.my_room.door_unlocked_closed;
+                            description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_closed;
                         }
                         break;
                     }
                     default:{
-                        description.innerText = "Look at what?";
+                        description.innerHTML = "Look at what?";
                     }
                 }
                 break;
             }
             case locations.home.bedroom_hallway:{
-                description.innerText = "";
+                description.innerHTML = "";
                 switch(input[1]){
                     case locations.current_room:{
-                        description.innerText = descriptions.look_description.home.bedroom_hallway.look;
+                        description.innerHTML = descriptions.look_description.home.bedroom_hallway.look;
                         break;
                     }
                     default:{
-                        description.innerText = "Look where?";
+                        description.innerHTML = "Look where?";
                     }
                 }
                 break;
             }
             case locations.home.living_room:{
-                description.innerText = "";
+                description.innerHTML = "";
                 switch(input[1]){
                     case locations.current_room:{
-                        description.innerText = descriptions.look_description.home.living_room.look;
+                        description.innerHTML = descriptions.look_description.home.living_room.look;
                         break;
                     }
                     default:{
-                        description.innerText = "Look where?";
+                        description.innerHTML = "Look where?";
                     }
                 }
                 break;
@@ -300,44 +301,44 @@ function checkInput(){
                     switch(input[1]){
                         case scenes.scene.home.my_room.door:{
                             if(scenes.scene.home.my_room.door_unlocked == false){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_locked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_locked;
                             } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == false){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
                             } else if (scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == false){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
                             } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == false){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
                             } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == true){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
                             } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == true && inventory.blanket.taken == false){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
                             } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == true){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
                             } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == true){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
                             } else if(scenes.scene.home.my_room.door_unlocked == true && inventory.quilt.taken == true  && inventory.pillow.taken == true && inventory.blanket.taken == true){
-                                description.innerText = descriptions.action_description.home.my_room.open.door_unlocked;
+                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
                                 scenes.scene.home.my_room.door_open = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
                             } 
                             break;
                         }
                         default:{
-                            description.innerText += "Open what?";
+                            description.innerHTML += "Open what?";
                         }
                     }
                     break;
@@ -351,7 +352,7 @@ function checkInput(){
                     switch(input[1]){
                         case scenes.scene.home.my_room.items.pillow:{
                             if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt_blanket);
                                 inventory.pillow.taken = true;
                                 let newItem = document.createElement("li");
@@ -361,7 +362,7 @@ function checkInput(){
                                 console.log("I am running");
                                 console.log(inventory.pillow.taken + " " + inventory.quilt.taken + " " + inventory.blanket.taken);
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt);
                                 let newItem = document.createElement("li");
@@ -370,7 +371,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
                                 let newItem = document.createElement("li");
@@ -379,7 +380,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_blanket);
                                 let newItem = document.createElement("li");
@@ -388,7 +389,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
                                 let newItem = document.createElement("li");
@@ -397,7 +398,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
                                 let newItem = document.createElement("li");
@@ -406,7 +407,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
                                 let newItem = document.createElement("li");
@@ -414,7 +415,7 @@ function checkInput(){
                                 newItem.appendChild(newNode);
                                 inventory_list.appendChild(newItem);
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.pillow;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
                                 inventory.pillow.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
                                 let newItem = document.createElement("li");
@@ -424,13 +425,13 @@ function checkInput(){
                                 console.log("I am running");
                             }
                             else {
-                                description.innerText += "\nYou've already taken this item.\n";
+                                description.innerHTML += "<br>You've already taken this item.<br>";
                             }
                             break;
                         }
                         case scenes.scene.home.my_room.items.quilt:{
                             if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_blanket);
                                 let newItem = document.createElement("li");
@@ -439,7 +440,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow);
                                 let newItem = document.createElement("li");
@@ -448,7 +449,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
                                 let newItem = document.createElement("li");
@@ -457,7 +458,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_blanket);
                                 let newItem = document.createElement("li");
@@ -466,7 +467,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
                                 let newItem = document.createElement("li");
@@ -475,7 +476,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
                                 let newItem = document.createElement("li");
@@ -484,7 +485,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
                                 let newItem = document.createElement("li");
@@ -493,7 +494,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.quilt;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                                 inventory.quilt.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
                                 let newItem = document.createElement("li");
@@ -503,13 +504,13 @@ function checkInput(){
                                 console.log("I am running");
                             }
                             else {
-                                description.innerText += "\nYou've already taken this item.\n";
+                                description.innerHTML += "<br>You've already taken this item.<br>";
                             }
                             break;
                         }
                         case scenes.scene.home.my_room.items.blanket:{
                             if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt);
                                 let newItem = document.createElement("li");
@@ -518,7 +519,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow);
                                 let newItem = document.createElement("li");
@@ -527,7 +528,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
                                 let newItem = document.createElement("li");
@@ -536,7 +537,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == false){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt);
                                 let newItem = document.createElement("li");
@@ -545,7 +546,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
                                 let newItem = document.createElement("li");
@@ -554,7 +555,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
                                 let newItem = document.createElement("li");
@@ -563,7 +564,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
                                 let newItem = document.createElement("li");
@@ -572,7 +573,7 @@ function checkInput(){
                                 inventory_list.appendChild(newItem);
                                 console.log("I am running");
                             } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door_open == true){
-                                description.innerText += descriptions.action_description.home.my_room.take.blanket;
+                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                                 inventory.blanket.taken = true;
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
                                 let newItem = document.createElement("li");
@@ -582,12 +583,12 @@ function checkInput(){
                                 console.log("I am running");
                             }
                             else {
-                                description.innerText += "\nYou've already taken this item.\n";
+                                description.innerHTML += "<br>You've already taken this item.<br>";
                             }
                             break;
                         }
                         default:{
-                            description.innerText += "\nThere's nothing there to take.\n";
+                            description.innerHTML += "<br>There's nothing there to take.<br>";
                         }
                     }
                 }
@@ -599,12 +600,12 @@ function checkInput(){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door:{
-                            description.innerText += descriptions.action_description.home.my_room.unlock.unlock_door;
+                            description.innerHTML += descriptions.action_description.home.my_room.unlock.unlock_door;
                             scenes.scene.home.my_room.door_unlocked = true;
                             break;
                         }
                         default:{
-                            description.innerText += "Unlock what?";
+                            description.innerHTML += "Unlock what?";
                         }
                     }
                     break;
@@ -620,19 +621,19 @@ function checkInput(){
                             if(scenes.scene.home.my_room.door_open == true){
                                 locations.set_current_location(locations.home.bedroom_hallway);
                                 locations.home.bedroom_hallway.visited = true;
-                                description.innerText = descriptions.look_description.home.bedroom_hallway.look;
+                                description.innerHTML = descriptions.look_description.home.bedroom_hallway.look;
                                 minimap.draw_minimap(locations.home.bedroom_hallway.minimap_image.default);
                                 console.log(locations.home.bedroom_hallway.visited);
                                 break;
                             } else if (scenes.scene.home.my_room.door_open == false){
-                                description.innerText = descriptions.look_description.home.my_room.door_closed_message;
+                                description.innerHTML = descriptions.look_description.home.my_room.door_closed_message;
                                 console.log("I am running");
                                 break;
                             }
                             break;
                         }
                         default:{
-                            description.innerText = "Go where?";
+                            description.innerHTML = "Go where?";
                         }
                     }
                     break;
@@ -666,18 +667,16 @@ function checkInput(){
             break;
         }
         default:{
-            description.innerText += "\n" + text_input.value + " is an invalid command";
+            description.innerHTML += "<br>" + text_input.value + " is an invalid command";
         }
     }
-    command_history.innerText += text_input.value + "\n";
+    command_history.innerHTML += text_input.value + "<br>";
     text_input.value = "";
 };
 document.getElementById("text-input").addEventListener("keyup", function(e){e.preventDefault(); if(e.keyCode === 13){ checkInput(); }; });
 document.getElementById("enter-button").addEventListener("click", checkInput);
 window.addEventListener("load", () => { 
-    for(let i = 0; i < story_dialogue.home.start.length; i++){
-        document.getElementById("scene-description").innerText += story_dialogue.home.start[i].toString();
-    }
+        document.getElementById("scene-description").innerHTML = story_dialogue.home.start;
     if(scenes.scene.home.my_room.door_open == false && scenes.scene.home.my_room.door_unlocked == false && inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false){
         minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
     }

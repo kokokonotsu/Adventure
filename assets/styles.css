@@ -61,6 +61,9 @@ main{
     margin-inline-start: 0;
     display: inline-block;
 }
+#scene-description b{
+    color: #FFB000;
+}
 #status-bar{
     float: right;
     height: 100%;
