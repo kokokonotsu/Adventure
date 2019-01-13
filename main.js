@@ -1,3 +1,21 @@
+const character = {
+    name: "Protagonist",
+    equipped: {
+        hands: { is_full: false, currently_equipped: "", },
+        head: {is_full: false, currently_equipped: "", },
+        arms: {is_full: false, currently_equipped: "", },
+        torso: {is_full: false, currently_equipped: "", },
+        legs: {is_full: false, currently_equipped: "", },
+        feet: {is_full: false, currently_equipped: "", },
+    },
+    hands_free: true,
+    encumbered: false,
+    stats: {
+        health: 100,
+        defense: 0,
+        magic: 0,
+    },
+};
 const locations = {
     current_location: "",
     current_room: "room",
