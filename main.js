@@ -78,6 +78,7 @@ const minimap = {
     }
 }
 const descriptions =  {
+    description_element: document.getElementById("scene-description"),
     look_description: {
         home: {
             my_room: {
@@ -197,6 +198,7 @@ const actions = {
     }
 };
 const inventory = {
+    inventory_list: document.getElementById("inventory"),
     pillow: {
         name: "pillow",
         taken: false,
@@ -216,6 +218,44 @@ const inventory = {
         name: "bag",
         taken: false,
         description: descriptions.look_description.home.living_room.items.bag
+    },
+    actions:{
+        take_pillow: function(minimap_image){
+            character.hands_free = false;
+            inventory.pillow.taken = true;
+            descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.pillow;
+            minimap.draw_minimap(minimap_image);
+            let newItem = document.createElement("li");
+            let newNode = document.createTextNode("Pillow");
+            newItem.appendChild(newNode);
+            inventory.inventory_list.appendChild(newItem);
+            console.log("I am running");
+            console.log(inventory.pillow.taken + " " + inventory.quilt.taken + " " + inventory.blanket.taken);
+        },
+        take_blanket: function(minimap_image){
+            character.hands_free = false;
+            inventory.blanket.taken = true;
+            description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
+            minimap.draw_minimap(minimap_image);
+            let newItem = document.createElement("li");
+            let newNode = document.createTextNode("Blanket");
+            newItem.appendChild(newNode);
+            inventory.inventory_list.appendChild(newItem);
+            console.log("I am running");
+            console.log(inventory.pillow.taken + " " + inventory.quilt.taken + " " + inventory.blanket.taken);
+        },
+        take_quilt: function(minimap_image){
+            character.hands_free = false;
+            inventory.quilt.taken = true;
+            descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.quilt;
+            minimap.draw_minimap(minimap_image);
+            let newItem = document.createElement("li");
+            let newNode = document.createTextNode("Quilt");
+            newItem.appendChild(newNode);
+            inventory.inventory_list.appendChild(newItem);
+            console.log("I am running");
+            console.log(inventory.pillow.taken + " " + inventory.quilt.taken + " " + inventory.blanket.taken);
+        }
     }
 };
 function checkInput(){
@@ -223,7 +263,6 @@ function checkInput(){
     var text_input_lowercase = text_input.value.toLowerCase();
     var input = text_input_lowercase.split(" ");
     var description = document.getElementById("scene-description");
-    var inventory_list = document.getElementById("inventory");
     var command_history = document.getElementById("command-history");
     switch(input[0]){
         case actions.look || "Look":{
@@ -369,247 +408,160 @@ function checkInput(){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.items.pillow:{
-                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false && character.hands_free == true){
-                                character.hands_free = false;
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt_blanket);
-                                inventory.pillow.taken = true;
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                                console.log(inventory.pillow.taken + " " + inventory.quilt.taken + " " + inventory.blanket.taken);
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false && character.hands_free == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                                character.hands_free = false;
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == false && character.hands_free == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                                character.hands_free = false;
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == false && character.hands_free == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_blanket);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                                character.hands_free = false;
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true && character.hands_free == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                                character.hands_free = false;
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true && character.hands_free == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                                character.hands_free = false;
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == true && character.hands_free == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                character.hands_free = false;
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == true && character.hands_free == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                                inventory.pillow.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Pillow");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                                character.hands_free = false;
-                            } else if(character.hands_free == false){
-                                description.innerHTML += "You already have something in your hands!";
-                            }
-                            else {
-                                description.innerHTML += "<br>You've already taken this item.<br>";
-                            }
+                            if(inventory.pillow.taken ==                   false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_closed_with_quilt_blanket);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_closed_with_quilt);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_closed);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_closed_with_blanket);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);}
+                            else if(inventory.pillow.taken ==              false 
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_open_with_quilt);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_open);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_pillow(locations.home.my_room.minimap_image.door_open_with_blanket);}
+                            else if(character.hands_free == false){description.innerHTML += "You already have something in your hands!";}
+                            else {description.innerHTML += "<br>You've already taken this item.<br>";};
                             break;
                         }
                         case scenes.scene.home.my_room.items.quilt:{
-                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_blanket);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_blanket);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == true && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.quilt;
-                                inventory.quilt.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Quilt");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            }
+                            if(inventory.pillow.taken ==                   false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_closed_with_pillow_blanket);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_closed_with_pillow);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_closed);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_closed_with_blanket);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_open_with_pillow);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              true
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_open);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_quilt(locations.home.my_room.minimap_image.door_open_with_blanket);}
                             else {
                                 description.innerHTML += "<br>You've already taken this item.<br>";
                             }
                             break;
                         }
                         case scenes.scene.home.my_room.items.blanket:{
-                            if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_quilt);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == true && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            } else if(inventory.pillow.taken == true && inventory.blanket.taken == false && inventory.quilt.taken == false && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML += descriptions.action_description.home.my_room.take.blanket;
-                                inventory.blanket.taken = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
-                                let newItem = document.createElement("li");
-                                let newNode = document.createTextNode("Blanket");
-                                newItem.appendChild(newNode);
-                                inventory_list.appendChild(newItem);
-                                console.log("I am running");
-                            }
+                            if(inventory.pillow.taken ==                   false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_closed_with_pillow);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_closed);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  false
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_closed_with_quilt);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);}
+                            else if(inventory.pillow.taken ==              false
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_open_with_pillow);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                true
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_open);}
+                            else if(inventory.pillow.taken ==              true
+                                && inventory.blanket.taken ==              false
+                                && inventory.quilt.taken ==                false
+                                && scenes.scene.home.my_room.door_open ==  true
+                                && character.hands_free ==                 true
+                            ){inventory.actions.take_blanket(locations.home.my_room.minimap_image.door_open_with_quilt);}
                             else {
                                 description.innerHTML += "<br>You've already taken this item.<br>";
                             }
