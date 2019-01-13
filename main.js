@@ -110,11 +110,14 @@ const descriptions =  {
         }
     },
     action_description: {
+        hands_free:{
+            hands_full: "<br>You can't do that, your hands are full!<br>"
+        },
         home:{
             my_room:{
                 open:{
-                    door_locked: "You try to open the door by turning knob and pulling.\ It won't budge an inch.<br>",
-                    door_unlocked: "You try to open the door by turning the knob and pulling.\ It swings open easily.<br>"
+                    door_locked: "You try to open the door by turning knob and pulling.<br> It won't budge an inch.<br>",
+                    door_unlocked: "You try to open the door by turning the knob and pulling.<br> It swings open easily.<br>"
                 },
                 unlock:{
                     unlock_door: "You hear a click as you turn the lock to unlock the door."
@@ -195,6 +198,13 @@ const actions = {
         at: "at",
         to: "to",
         through: "through"
+    },
+    open_door:{
+        my_bedroom_door: function(minimap_image){
+            descriptions.description_element.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
+            scenes.scene.home.my_room.door.name_open = true;
+            minimap.draw_minimap(minimap_image);
+        }
     }
 };
 const inventory = {
@@ -357,40 +367,28 @@ function checkInput(){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door.name:{
-                            if(scenes.scene.home.my_room.door.name_unlocked == false){
+                            if(character.hands_free == false){
+                                description.innerHTML += descriptions.action_description.hands_free.hands_full;
+                            }
+                            else if(scenes.scene.home.my_room.door.name_unlocked == false && character.hands_free == false){
                                 description.innerHTML = descriptions.action_description.home.my_room.open.door_locked;
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == false){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
-                            } else if (scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == false){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == false){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == true){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_quilt);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == true && inventory.blanket.taken == false){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_blanket);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == true){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == true){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true  && inventory.pillow.taken == true && inventory.blanket.taken == true){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-                                scenes.scene.home.my_room.door.name_open = true;
-                                minimap.draw_minimap(locations.home.my_room.minimap_image.door_open);
+                            }
+                            else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == false && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
+                            } else if (scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == false && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == false && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == true && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_quilt);
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == true && inventory.blanket.taken == false && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_blanket);
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == true && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow);
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == true && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true  && inventory.pillow.taken == true && inventory.blanket.taken == true && character.hands_free == true){
+                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open);
                             } 
                             break;
                         }
