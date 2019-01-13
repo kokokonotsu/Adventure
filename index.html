@@ -12,25 +12,30 @@
     <main>
         <p id="scene-description"></p>
         <div id="status-bar">
-            <object width="200" height="200" type="image/svg+xml" id="minimap-container" >
+            <object type="image/svg+xml" id="minimap-container" >
             </object>
-            <div id="data-bar">
-            </div>
+            <ul id="data-bar">
+                <li id="health-container"><span id="health"></span></li>
+                <li id="magic-container"><span id="magic"></span></li>
+                <li id="character-profile-container">
+                    <object type="image/svg+xml" id="character-profile"></object>
+                </li>
+            </ul>
         </div>
     </main>
     <div id="user-container">
         <div id="input-form">
-            <div id="command-history-container">
-                <p id="command-history"></p>
-            </div>
+            <ul id="inventory">
+
+            </ul>
             <div id="input-container">
                 <input type="text" id="text-input" autocomplete="off">
                 <button id="enter-button">Enter</button>
             </div>
         </div>
-    <ul id="inventory">
-        
-    </ul>
+        <div id="command-history-container">
+            <p id="command-history"></p>
+        </div>
     </div>
 </body>
 <script src="main.js"></script>

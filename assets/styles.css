@@ -28,6 +28,7 @@ html{
     color: var(--font-color);
     background-color: var(--background-color);
     font-family: 'PT Serif', serif;
+    /* overflow: hidden; */
 }
 body{
     display: flex;
@@ -65,14 +66,36 @@ main{
     color: #FFB000;
 }
 #status-bar{
+    display: flex;
+    flex-direction: column;
     float: right;
     height: 100%;
     width: 200px;
     border-left: 1px solid var(--font-color);
 }
 #data-bar{
-    width: 100%;
-    
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    flex-grow: 1;
+    list-style-type: none;
+}
+#health-container, #magic-container{
+
+}
+#health, #magic{
+
+}
+#character-profile-container{
+    width: 200px;
+    height: 240px;
+    margin: 0;
+}
+#character-profile{
+    width: 200px;
+    margin: 0;
 }
 #minimap-container{
     width: 100%;
@@ -95,7 +118,7 @@ main{
     width: 100%;
 }
 #command-history-container{
-    height: 70%;
+    flex-grow: 1;
     overflow: auto;
     border: 1px solid var(--font-color);
 }
@@ -108,7 +131,7 @@ main{
 #text-input{
     border: 1px solid var(--font-color);
     margin: 5px;
-    width: 60%;
+    width: 70%;
     color: var(--font-color);
     caret-color: var(--font-color);
     background-color: var(--background-color);
@@ -131,13 +154,13 @@ main{
     opacity: 1;
 }
 #inventory{
-    height: 40%;
+    height: 70%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 100%;
     padding: 0;
     margin: 0;
+    border: 1px solid;
 }
 #inventory li{
     display: inline;
