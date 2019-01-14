@@ -56,25 +56,25 @@ const locations = {
                     "assets/home/my_bedroom/door_closed_with_quilt_blanket.svg",
                 door_closed_with_pillow_quilt: 
                     "assets/home/my_bedroom/door_closed_with_pillow_quilt.svg",
-                door_closed_with_blanket: 
+                door_closed_with_blanket:
                     "assets/home/my_bedroom/door_closed_with_blanket.svg",
-                door_closed_with_pillow: 
+                door_closed_with_pillow:
                     "assets/home/my_bedroom/door_closed_with_pillow.svg",
-                door_closed_with_quilt: 
+                door_closed_with_quilt:
                     "assets/home/my_bedroom/door_closed_with_quilt.svg",
-                door_closed: 
+                door_closed:
                     "assets/home/my_bedroom/door_closed_with_quilt.svg",
                 door_open_with_pillow_quilt_blanket:
                     "assets/home/my_bedroom/door_open_with_pillow_quilt_blanket.svg",
                 door_open_with_quilt_blanket:
                     "assets/home/my_bedroom/door_open_with_quilt_blanket.svg",
-                door_open_with_pillow_blanket: 
+                door_open_with_pillow_blanket:
                     "assets/home/my_bedroom/door_open_with_pillow_blanket.svg",
-                door_open_with_pillow_quilt: 
+                door_open_with_pillow_quilt:
                     "assets/home/my_bedroom/door_open_with_pillow_quilt.svg",
                 door_open_with_blanket:
                     "assets/home/my_bedroom/door_open_with_blanket.svg",
-                door_open_with_pillow: 
+                door_open_with_pillow:
                     "assets/home/my_bedroom/door_open_with_pillow.svg",
                 door_open_with_quilt: 
                     "assets/home/my_bedroom/door_open_with_quilt.svg",
@@ -139,6 +139,25 @@ const descriptions =  {
         hands_free:{
             hands_full: "<br>You can't do that, your hands are full!<br>"
         },
+        bag_actions:{
+            put_in: function(item_name, item_in_bag_relation){
+                if(item_in_bag_relation == false){
+                    descriptions.description_element.innerHTML += "You put " + item_name + " into the bag.";
+                    item_in_bag_relation = true;
+                } else {
+                    descriptions.description_element.innerHTML += "That item's already in the bag!";
+                }
+                
+            },
+            take_out: function(item_name, item_in_bag_relation){
+                if(item_in_bag_relation == true){
+                    descriptions.description_element.innerHTML += "You take " + item_name + " out of the bag.";
+                    item_in_bag_relation = false;
+                } else {
+                    descriptions.description_element.innerHTML += "That item's not in the bag!";
+                }
+            }
+        },
         home:{
             my_room:{
                 open:{
@@ -156,6 +175,28 @@ const descriptions =  {
                         blanket: "You put one of the blankets from your bed into you bag.<br>",
                         quilt: "You put the quilt from your bed into you bag.<br>"
                     }
+                }
+            },
+            living_room:{
+                open:{
+                    door_locked: "You try to open the door by turning knob and pulling.<br> It won't budge an inch.<br>",
+                    door_unlocked: "You try to open the door by turning knob and pulling.<br> It swings open easily.<br>"
+                },
+                unlock:{
+                    unlock_door: "You hear a click as you turn the lock to unlock the door.<br>"
+                },
+                take:{
+                    bag: "You take take the bag.<br>",
+                    chair: "You pick up the chair, it's still fairly easy to move around.<br>"
+                },
+                sit:{
+                    chair: "You sit down on the chair.<br> It's moderately comfortable.<br>"
+                },
+                grab:{
+                    chair: "You pick up the chair, it's still fairly easy to move around.<br>"
+                },
+                pick_up:{
+                    chair: "You pick up the chair, it's still fairly easy to move around.<br>"
                 }
             }
         }
@@ -196,7 +237,10 @@ const scenes = {
                 living_room_door: {name: "living room door", cardinal_direction: "south" },
             },
             living_room:{
-                look: descriptions.look_description.home.living_room.look
+                look: descriptions.look_description.home.living_room.look,
+                bedroom_hallway_door: { name: "bedroom hallway door", cardinal_direction: "north" },
+                kitchen_door: { name: "kitchen door", cardinal_direction: "east" },
+                outside_door: { name: "outside door", cardinal_direction: "west" }
             }
         }
     },
@@ -338,14 +382,28 @@ function checkInput(){
                         description.innerHTML = descriptions.look_description.home.my_room.window;
                         break;
                     }
+                    case scenes.scene.home.my_room.window.cardinal_direction:{
+                        description.innerHTML = descriptions.look_description.home.my_room.window;
+                        break;
+                    }
                     case scenes.scene.home.my_room.bed:{
                         description.innerHTML = descriptions.look_description.home.my_room.bed;
                         break;
                     }
                     case scenes.scene.home.my_room.door.name:{
-                        if(scenes.scene.home.my_room.door.name_unlocked == false){
+                        if(scenes.scene.home.my_room.door_unlocked == false){
                             description.innerHTML = descriptions.look_description.home.my_room.door_locked_closed;
-                        } else if (scenes.scene.home.my_room.door.name_unlocked == true){
+                        } else if (scenes.scene.home.my_room.door_unlocked == true && scenes.scene.home.my_room.door_open == false){
+                            description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_closed;
+                        } else if (scenes.scene.home.my_room.door_unlocked == true && scenes.scene.home.my_room.door_open == true){
+                            description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_opened;
+                        }
+                        break;
+                    }
+                    case scenes.scene.home.my_room.door.cardinal_direction:{
+                        if(scenes.scene.home.my_room.door_unlocked == false){
+                            description.innerHTML = descriptions.look_description.home.my_room.door_locked_closed;
+                        } else if (scenes.scene.home.my_room.door_unlocked == true){
                             description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_closed;
                         }
                         break;
