@@ -28,11 +28,18 @@ const character = {
             value: 10
         }
     },
+    character_profile:{
+        character_profile_element: document.getElementById("character-profile"),
+        character_profile_image: "assets/character/Text-Adventure Hero Profile.svg"
+    },
     display_stats: function(){
         character.stats.health.element.innerText = character.stats.health.value;
         character.stats.defense.element.innerText = character.stats.defense.value;
         character.stats.magic.element.innerHTML = character.stats.magic.value;
         character.stats.money.element.innerHTML = character.stats.money.value;
+    },
+    display_character_profile: function(character_image){
+        character.character_profile.character_profile_element.setAttribute("data", character_image);
     }
 };
 const locations = {
@@ -691,6 +698,7 @@ document.getElementById("enter-button").addEventListener("click", checkInput);
 window.addEventListener("load", () => { 
     document.getElementById("scene-description").innerHTML = story_dialogue.home.start;
     character.display_stats();
+    character.display_character_profile(character.character_profile.character_profile_image);
     minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
     locations.current_location = locations.home.my_room; 
 });
