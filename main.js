@@ -11,10 +11,29 @@ const character = {
     hands_free: true,
     encumbered: false,
     stats: {
-        health: 100,
-        defense: 0,
-        magic: 0,
+        health: {
+            element: document.getElementById("health"),
+            value: 100
+        },
+        defense: {
+            element: document.getElementById("defense"),
+            value: 0
+        },
+        magic: {
+            element: document.getElementById("magic"),
+            value: 0
+        },
+        money: {
+            element: document.getElementById("money"),
+            value: 10
+        }
     },
+    display_stats: function(){
+        character.stats.health.element.innerText = character.stats.health.value;
+        character.stats.defense.element.innerText = character.stats.defense.value;
+        character.stats.magic.element.innerHTML = character.stats.magic.value;
+        character.stats.money.element.innerHTML = character.stats.money.value;
+    }
 };
 const locations = {
     current_location: "",
@@ -671,6 +690,7 @@ document.getElementById("text-input").addEventListener("keyup", function(e){e.pr
 document.getElementById("enter-button").addEventListener("click", checkInput);
 window.addEventListener("load", () => { 
     document.getElementById("scene-description").innerHTML = story_dialogue.home.start;
+    character.display_stats();
     minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
     locations.current_location = locations.home.my_room; 
 });
