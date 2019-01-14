@@ -14,19 +14,29 @@
         <div id="status-bar">
             <object type="image/svg+xml" id="minimap-container" >
             </object>
-            <ul id="data-bar">
-                <li id="health-container"><span id="health"></span></li>
-                <li id="magic-container"><span id="magic"></span></li>
-                <li id="character-profile-container">
+            <div id="data-bar">
+                <div id="stats-label-container">
+                    <span id="health-label">Health:</span>
+                    <span id="defense-label">Defense:</span>
+                    <span id="magic-label">Magic:</span>
+                    <span id="money-label">Money:</span>
+                </div>
+                <div id="stats-container">
+                    <span id="health"></span>
+                    <span id="defense"></span>
+                    <span id="magic"></span>
+                    <span id="money"></span>
+                </div>
+                <div id="character-profile-container">
                     <object type="image/svg+xml" id="character-profile"></object>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </main>
     <div id="user-container">
         <div id="input-form">
             <ul id="inventory">
-                
+
             </ul>
             <div id="input-container">
                 <input type="text" id="text-input" autocomplete="off">

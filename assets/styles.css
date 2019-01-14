@@ -39,7 +39,7 @@ body{
 
 }
 main{
-    height: 70%;
+    height: 75%;
     border: 1px solid var(--font-color);
     position: relative;
     overflow: auto;
@@ -74,27 +74,59 @@ main{
     border-left: 1px solid var(--font-color);
 }
 #data-bar{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template: "stats-label stats" 30%
+    "character-profile character-profile" auto
+    /50% 50%;
+    width: 200px;
+    height: 300px;
+    flex-grow: 1;
     padding: 0;
     margin: 0;
-    width: 200px;
+    overflow: hidden;
+}
+#stats-label-container{
+    grid-area: stats-label;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+#stats-container{
+    grid-area: stats;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#health-label, #defense-label, #magic-label, #money-label{
+    width: 100%;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    font-size: 0.9em;
     flex-grow: 1;
-    list-style-type: none;
+    text-align: center;
 }
-#health-container, #magic-container{
-
-}
-#health, #magic{
-
+#health, #defense, #magic, #money{
+    width: 100%;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    font-size: 0.9em;
+    flex-grow: 1;
+    text-align: center;
 }
 #character-profile-container{
     width: 200px;
-    height: 240px;
     margin: 0;
 }
 #character-profile{
     width: 200px;
+    height: 100%;
+    margin: 0;
+}
+#character-profile document html body{
     margin: 0;
 }
 #minimap-container{
