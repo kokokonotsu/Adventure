@@ -10,6 +10,7 @@ const character = {
     },
     hands_free: true,
     encumbered: false,
+    has_bag: false,
     stats: {
         health: {
             element: document.getElementById("health"),
@@ -748,7 +749,11 @@ function checkInput(){
             description.innerHTML += "<br>" + input + " is an invalid command";
         }
     }
-    command_history.innerHTML += text_input.value + "<br>";
+    // command_history.innerHTML += text_input.value + "<br>";
+    // console.log(command_history.childElementCount);
+    // if(command_history.childElementCount > 20){
+    //     command_history.removeChild(command_history.children[0]);
+    // }
     text_input.value = "";
 };
 document.getElementById("text-input").addEventListener("keyup", function(e){e.preventDefault(); if(e.keyCode === 13){ checkInput(); }; });
