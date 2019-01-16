@@ -807,7 +807,7 @@ const scene_description_container = document.getElementById("scene-description-c
 var document_width;
 function scene_description_container_width(){
     document_width = document.body.clientWidth;
-    var scene_description_container_width_variable = document_width - 311;
+    var scene_description_container_width_variable = document_width - 312;
     scene_description_container.style.width = scene_description_container_width_variable + "px";
     console.log(document_width);
     console.log(scene_description_container_width_variable);

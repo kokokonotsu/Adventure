@@ -56,14 +56,16 @@ main{
 }
 #scene-description{
     padding-left: 5px;
+    padding-right: 5px;
     padding-top: 1em;
     margin: 0;
-    width: 80%;
+    width: 100%;
     margin-block-end: 0;
     margin-block-start: 0;
     margin-inline-end: 0;
     margin-inline-start: 0;
     display: inline-block;
+    text-align: center;
 }
 #scene-description b{
     color: #FFB000;
@@ -78,11 +80,11 @@ main{
 }
 #data-bar{
     display: grid;
-    grid-template: "stats-label stats" 30%
+    grid-template: "stats-label stats" 20%
     "character-profile character-profile" auto
     /50% 50%;
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: 350px;
     flex-grow: 1;
     padding: 0;
     margin: 0;
@@ -102,30 +104,47 @@ main{
     justify-content: center;
     align-items: center;
 }
-#health-label, #defense-label, #magic-label, #money-label{
+#health-label-container, #defense-label-container, #magic-label-container, #money-label-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     border-top: 1px solid;
     border-left: 1px solid;
     border-bottom: 1px solid;
-    font-size: 0.9em;
+    border-right: 0.5px solid;
     flex-grow: 1;
     text-align: center;
 }
-#health, #defense, #magic, #money{
+#health-label, #defense-label, #magic-label, #money-label{
+    font-size: 0.9em;
+}
+#health-container, #defense-container, #magic-container, #money-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     border-top: 1px solid;
     border-right: 1px solid;
     border-bottom: 1px solid;
-    font-size: 0.9em;
+    border-left: 0.5px solid;
     flex-grow: 1;
     text-align: center;
 }
+#health, #defense, #magic, #money{
+    font-size: 0.9em;
+}
 #character-profile-container{
-    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
     margin: 0;
 }
 #character-profile{
-    width: 200px;
+    width: 250px;
     height: 100%;
     margin: 0;
 }
