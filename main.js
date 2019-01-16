@@ -82,7 +82,7 @@ const locations = {
                     "assets/home/my_bedroom/door_open_with_quilt.svg",
                 door_open:
                     "assets/home/my_bedroom/door_open.svg"
-            }
+            },
         },
         bedroom_hallway: { name: "bedroom hallway", visited: false, 
             minimap_image: {
@@ -91,7 +91,12 @@ const locations = {
             }
         },
         kitchen: { name: "kitchen", visited: false },
-        living_room: { name: "living_room", visited: false },
+        living_room: { name: "living_room", visited: false,
+        minimap_image: {
+                default:
+                    "assets/home/living_room/living_room_default.svg"
+            }
+        },
         courtyard: { name: "courtyard", visited: false },
         servants_quarters: { name: `servant's quarters`, visited: false },
     },
@@ -121,16 +126,16 @@ const descriptions =  {
                 door_unlocked_opened: "It is a wooden door, of the finest quality.<br> The arch of the door allows for enough space for two of you to fit through side by side, and about two heads taller than you are.<br> Upon further inspection, the door seems to be unlocked on the inside, your side.<br> Everything seems good to go, the door is open, just head on through.<br>",
                 door_closed_message: "Where are you trying to go? The door is closed!<br>",
                 items: {
-                    pillow: "It's the pillow from your bed, pretty soft.<br> Hope that's drool on there.<br>",
-                    quilt: "It's an elaborate quilt, of the finest quality.<br> You can tell that there has been some love put into this quilt.<br>",
+                    pillow: "It's the pillow from your bed, <i>pretty soft</i>.<br> Hope that's drool on there.<br>",
+                    quilt: "It's an elaborate quilt, of the <i>finest</i> quality.<br> You can tell that there has been some love put into this quilt.<br>",
                     blanket: "This is one of the blankets from your bed.<br> Still warm.<br> Nice.<br>"
                 }
             },
             bedroom_hallway:{
-                look: "You are in a hallway connecting your room with a series of other rooms.<br> There are several doors, one across the way from your room to the west, and one at either end of the hall, north and south respectively.<br> Your room is to the east.<br>"
+                look: "You are in a hallway connecting your room with a series of other rooms.<br> There are several doors, one across the way from your room to the <b>west</b>, and one at either end of the hall, <b>north</b> and <b>south</b> respectively.<br> Your room is to the <b>east</b>.<br>"
             },
             living_room:{
-                look: "You are standing in a rather large space, much larger than your room. This is the living room. There is a fireplace set within the wall to the east, an archway leading towards the smell of food to the west, and a hallway to the south.<br>",
+                look: "You are standing in a rather large space, much larger than your room. This is the living room. There is a fireplace set within the wall to the <b>east</b>, an archway leading towards the smell of food to the <b>west</b>, and a hallway to the <b>south</b>.<br>",
                 items:{
                     bag: "You can put stuff in here!<br>"
                 }
@@ -463,11 +468,9 @@ function checkInput(){
                         case scenes.scene.home.my_room.door.name:{
                             if(character.hands_free == false){
                                 description.innerHTML += descriptions.action_description.hands_free.hands_full;
-                            }
-                            else if(scenes.scene.home.my_room.door.name_unlocked == false && character.hands_free == false){
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == false && character.hands_free == false){
                                 description.innerHTML = descriptions.action_description.home.my_room.open.door_locked;
-                            }
-                            else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == false && character.hands_free == true){
+                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == false && character.hands_free == true){
                                 actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
                             } else if (scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == false && character.hands_free == true){
                                 actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
@@ -748,7 +751,7 @@ function checkInput(){
                         }
                         case scenes.scene.home.bedroom_hallway.living_room_door.cardinal_direction:{
                             locations.set_current_location(locations.home.living_room);
-                            //minimap.draw_minimap();
+                            minimap.draw_minimap(locations.home.living_room.minimap_image.default);
                             console.log("I am running");
                             break;
                         }
