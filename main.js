@@ -106,6 +106,7 @@ const locations = {
 }
 const minimap = {
     minimap: document.getElementById("minimap-container"),
+    minimap_svg: null,
     draw_minimap: function(minimap_image){
         this.minimap.setAttribute("data", minimap_image);
     }
@@ -783,20 +784,76 @@ function checkInput(){
     // }
     text_input.value = "";
 };
+/*
+//<![CDATA[
 
+// wait until all the resources are loaded
+window.addEventListener("load", findSVGElements, false);
+
+// fetches the document for the given embedding_element
+function getSubDocument(embedding_element)
+{
+    //console.log("I am running");
+    if (embedding_element.contentDocument) 
+    {
+        console.log("I am running");
+        return embedding_element.contentDocument;
+        
+    } 
+    else 
+    {
+        console.log("I am running");
+        var subdoc = null;
+        try {
+            subdoc = embedding_element.contentDocument;
+            console.log("try: I am running");
+            console.log(subdoc);
+        } catch(e) {}
+        return subdoc;
+    }
+}
+        
+function findSVGElements()
+{
+    console.log("I am running");
+    var minimap_container = document.getElementsByClassName("minimap-container");
+    console.log(minimap_container.length);
+    for (var i = 0; i < minimap_container.length; i++)
+    {
+        //console.log("I am running");
+        //console.log(subdoc);
+        var subdoc = getSubDocument(minimap_container[i]);
+        //console.log(minimap_container[i]);
+        //console.log(subdoc);
+        if (subdoc) {
+            subdoc.getElementById("bedframe");
+            console.log(subdoc);
+            console.log("subdoc running");
+        }
+    }
+}*/
+//]]>
 async function load_object_svg(){
+    /*var minimap_document = document.getElementById("minimap-container");
+    var minimap_svg = minimap_document.contentDocument;
+    console.log(minimap_document);
+    console.log(minimap_svg);
+    window.addEventListener("load", ()=>{ 
+        var minimap_svg_get = document.getElementById("minimap");
+        console.log(minimap_svg_get);
+    });*/
+};
+window.onload = ()=>{
     var minimap_document = document.getElementById("minimap-container");
     var minimap_svg = minimap_document.contentDocument;
     console.log(minimap_document);
     console.log(minimap_svg);
-        
+    var minimap_svg_get = minimap_svg.getElementById("minimap");
+    var bedframe = minimap_svg_get.getElementById("bed-frame");
+    console.log(minimap_svg_get);
+    console.log(bedframe);
+    console.log(bedframe.style.strokeOpacity);
 };
-$(document).ready(()=>{
-    minimap_document = document.getElementById("minimap-container");
-    minimap_svg = minimap_document.contentDocument;var minimap_svg = minimap_document.contentDocument;
-    console.log(minimap_document);
-    console.log(minimap_svg);
-}, 2000);
 const load_document = new Promise(function(resolve, reject){
     document.getElementById("scene-description").innerHTML = story_dialogue.home.start;
     character.display_stats();
@@ -815,6 +872,9 @@ function scene_description_container_width(){
     console.log(document_width);
     console.log(scene_description_container_width_variable);
 };
+function change_svg(){
+    console.log(subdoc);
+}
 window.addEventListener("resize", scene_description_container_width);
 window.addEventListener("load", scene_description_container_width);
 document.getElementById("text-input").addEventListener("keyup", function(e){e.preventDefault(); if(e.keyCode === 13){ checkInput(); }; });

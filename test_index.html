@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 300 300">
+        <title>SVG Logo</title>
+        <desc>Designed for the SVG Logo Contest in 2006 by Harvey Rayner, and adopted by W3C in 2009. It is available under the Creative Commons license for those who have an SVG product or who are using SVG on their site.</desc>     
+         <g stroke-width="38.0086" stroke="#000">
+           <g id="svgstar" transform="translate(150, 150)">
+             <path id="svgbar" fill="lime" d="M-84.1487,-15.8513 a22.4171,22.4171 0 1 0 0,31.7026 h168.2974 a22.4171,22.4171 0 1 0 0,-31.7026 Z"/>
+             <use xlink:href="#svgbar" transform="rotate(45)"/>
+             <use xlink:href="#svgbar" transform="rotate(90)"/>
+             <use xlink:href="#svgbar" transform="rotate(135)"/>
+           </g>
+         </g>
+         <use xlink:href="#svgstar"/>
+      </svg>
+</body>
+<script>//<![CDATA[
+		
+    // wait until all the resources are loaded
+    window.addEventListener("load", findSVGElements, false);
+    
+    // fetches the document for the given embedding_element
+    function getSubDocument(embedding_element)
+    {
+        if (embedding_element.contentDocument) 
+        {
+            return embedding_element.contentDocument;
+        } 
+        else 
+        {
+            var subdoc = null;
+            try {
+                subdoc = embedding_element.getSVGDocument();
+            } catch(e) {}
+            return subdoc;
+        }
+    }
+            
+    function findSVGElements()
+    {
+        var elms = document.querySelectorAll(".emb");
+        for (var i = 0; i < elms.length; i++)
+        {
+            var subdoc = getSubDocument(elms[i])
+            if (subdoc)
+                subdoc.getElementById("svgbar").setAttribute("fill", "lime");
+        }
+    }
+    //]]>
+    </script>
+</html>
