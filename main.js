@@ -226,15 +226,15 @@ const scenes = {
             my_room:{
                 look: descriptions.look_description.home.my_room.look,
                 bed: "bed",
-                door: { name: "door", cardinal_direction: "west" },
-                window: { name: "window", cardinal_direction: "east" },
+                door: { name: "door", cardinal_direction: "west", svg: null },
+                window: { name: "window", cardinal_direction: "east", svg: null},
                 door_unlocked: false,
                 door_open: false,
                 items:{
-                    pillow: "pillow",
-                    quilt: "quilt",
-                    blanket: "blanket"
-                }
+                    pillow: {name: "pillow", svg: null},
+                    quilt: {name: "quilt", svg: null},
+                    blanket: {name: "blanket", svg: null},
+                },
             },
             kitchen:{
                 look: descriptions.look_description.home.kitchen
@@ -248,7 +248,8 @@ const scenes = {
                 look: descriptions.look_description.home.living_room.look,
                 bedroom_hallway_door: { name: "bedroom hallway door", cardinal_direction: "north" },
                 kitchen_door: { name: "kitchen door", cardinal_direction: "east" },
-                outside_door: { name: "outside door", cardinal_direction: "west" }
+                outside_door: { name: "outside door", cardinal_direction: "west" },
+                fireplace: { name: "fireplace", svg: null },
             }
         }
     },
@@ -503,7 +504,7 @@ function checkInput(){
             switch(locations.current_location){
                 case locations.home.my_room:{
                     switch(input[1]){
-                        case scenes.scene.home.my_room.items.pillow:{
+                        case scenes.scene.home.my_room.items.pillow.name:{
                             if(inventory.pillow.taken ==                   false
                                 && inventory.blanket.taken ==              false
                                 && inventory.quilt.taken ==                false
@@ -556,7 +557,7 @@ function checkInput(){
                             else {description.innerHTML += "<br>You've already taken this item.<br>";};
                             break;
                         }
-                        case scenes.scene.home.my_room.items.quilt:{
+                        case scenes.scene.home.my_room.items.quilt.name:{
                             if(inventory.pillow.taken ==                   false
                                 && inventory.blanket.taken ==              false
                                 && inventory.quilt.taken ==                false
@@ -611,7 +612,7 @@ function checkInput(){
                             }
                             break;
                         }
-                        case scenes.scene.home.my_room.items.blanket:{
+                        case scenes.scene.home.my_room.items.blanket.name:{
                             if(inventory.pillow.taken ==                   false
                                 && inventory.blanket.taken ==              false
                                 && inventory.quilt.taken ==                false
@@ -784,85 +785,47 @@ function checkInput(){
     // }
     text_input.value = "";
 };
-/*
-//<![CDATA[
-
-// wait until all the resources are loaded
-window.addEventListener("load", findSVGElements, false);
-
-// fetches the document for the given embedding_element
-function getSubDocument(embedding_element)
-{
-    //console.log("I am running");
-    if (embedding_element.contentDocument) 
-    {
-        console.log("I am running");
-        return embedding_element.contentDocument;
-        
-    } 
-    else 
-    {
-        console.log("I am running");
-        var subdoc = null;
-        try {
-            subdoc = embedding_element.contentDocument;
-            console.log("try: I am running");
-            console.log(subdoc);
-        } catch(e) {}
-        return subdoc;
-    }
-}
-        
-function findSVGElements()
-{
-    console.log("I am running");
-    var minimap_container = document.getElementsByClassName("minimap-container");
-    console.log(minimap_container.length);
-    for (var i = 0; i < minimap_container.length; i++)
-    {
-        //console.log("I am running");
-        //console.log(subdoc);
-        var subdoc = getSubDocument(minimap_container[i]);
-        //console.log(minimap_container[i]);
-        //console.log(subdoc);
-        if (subdoc) {
-            subdoc.getElementById("bedframe");
-            console.log(subdoc);
-            console.log("subdoc running");
-        }
-    }
-}*/
-//]]>
-async function load_object_svg(){
-    /*var minimap_document = document.getElementById("minimap-container");
-    var minimap_svg = minimap_document.contentDocument;
-    console.log(minimap_document);
+window.onload = function getSVG(){
+    var minimap_svg = document.getElementById("minimap-container");
     console.log(minimap_svg);
-    window.addEventListener("load", ()=>{ 
-        var minimap_svg_get = document.getElementById("minimap");
-        console.log(minimap_svg_get);
-    });*/
-};
-window.onload = ()=>{
-    var minimap_document = document.getElementById("minimap-container");
-    var minimap_svg = minimap_document.contentDocument;
-    console.log(minimap_document);
-    console.log(minimap_svg);
-    var minimap_svg_get = minimap_svg.getElementById("minimap");
-    var bedframe = minimap_svg_get.getElementById("bed-frame");
+    var minimap_svg_get = minimap_svg.contentDocument;
     console.log(minimap_svg_get);
-    console.log(bedframe);
-    console.log(bedframe.style.strokeOpacity);
+    var minimap_document = minimap_svg_get.getElementById("minimap");
+    console.log(minimap_document);
+    console.log(minimap_document.children);
+    for(let i = 0; i < minimap_document.children.length; i++){
+        if(minimap_document.children[i].id == "bed-frame"){
+            var bedframe = minimap_document.getElementById("bed-frame");
+            console.log("bedframe found.");
+        } else if (minimap_document.children[i].id == "bedroom-door"){
+            var bedroom_door = minimap_document.getElementById("bedroom-door");
+            console.log("bedroom door found.");
+        } else if(minimap_document.children[i].id == "pillows"){
+            var pillows = minimap_document.getElementById("pillows");
+            console.log("pillows found.");
+            for(let i = 0; i < pillows.children.length; i++){
+                if(pillows.children[i].id == "pillow-1"){
+                    var pillow_1 = minimap_document.getElementById("pillow-1");
+                    console.log("pillow-1 found.");
+                }
+                if(pillows.children[i].id == "pillow-2"){
+                    var pillow_2 = minimap_document.getElementById("pillow-2");
+                    console.log("pillow-2 found.");
+                }
+            }
+        } else if(minimap_document.children[i].id == "quilt"){
+            var quilt = minimap_document.getElementById("quilt");
+            console.log("quilt found.");
+        }
+    };
 };
-const load_document = new Promise(function(resolve, reject){
+function load_document (){
     document.getElementById("scene-description").innerHTML = story_dialogue.home.start;
     character.display_stats();
     character.display_character_profile(character.character_profile.character_profile_image);
     minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
     locations.current_location = locations.home.my_room;
-    resolve(load_object_svg);
-    reject("object load-in rejected");
-});
+};
 const scene_description_container = document.getElementById("scene-description-container");
 var document_width;
 function scene_description_container_width(){
@@ -877,6 +840,6 @@ function change_svg(){
 }
 window.addEventListener("resize", scene_description_container_width);
 window.addEventListener("load", scene_description_container_width);
+window.addEventListener("load", load_document);
 document.getElementById("text-input").addEventListener("keyup", function(e){e.preventDefault(); if(e.keyCode === 13){ checkInput(); }; });
 document.getElementById("enter-button").addEventListener("click", checkInput);
-load_document.then(load_object_svg);
