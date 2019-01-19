@@ -2,6 +2,29 @@
     --background-color: #111111;
     --font-color: #0c0;
 }
+/* Firefox Scroll-bar-width CSS*/
+.scroll-width-auto{
+    scrollbar-width: auto;
+}
+.scroll-width-thin{
+    scrollbar-width: thin;
+}
+.scroll-width-none{
+    scrollbar-width: none;
+}
+/* Firebox Scroll-bar-color CSS */
+.scroll-color-auto{
+    scrollbar-color: auto;
+}
+.scroll-color-light{
+    scrollbar-color: light;
+}
+.scroll-color-dark{
+    scrollbar-color: dark;
+}
+.scroll-color-colors{
+    scrollbar-color: #00cc00 #111111;
+}
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
@@ -28,7 +51,7 @@ html{
     color: var(--font-color);
     background-color: var(--background-color);
     font-family: 'Nunito', serif;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 body{
     display: flex;
@@ -39,7 +62,7 @@ body{
 
 }
 main{
-    height: 85%;
+    height: 75%;
     border: 1px solid var(--font-color);
     position: relative;
     overflow: auto;
@@ -173,16 +196,13 @@ main{
     width: 100%;
 }
 #command-history-container{
-    flex-grow: 1;
+    position: relative;
+    height: 10%;
     overflow: auto;
     border: 1px solid var(--font-color);
 }
-#command-history{
-    text-align: justify;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    overflow: auto;
+#command-history-container span{
+    display: block;
 }
 #text-input{
     border: 1px solid var(--font-color);
@@ -242,4 +262,14 @@ main{
 #inventory li span{
     display: inline;
     padding: 1px;
+}
+/* Classes */
+.overflow-auto{
+    overflow: auto;
+}
+.overflow-hidder{
+    overflow: hidden;
+}
+.btm{
+    bottom: 0;
 }

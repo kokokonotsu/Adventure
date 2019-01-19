@@ -438,7 +438,7 @@ function checkInput(){
     var text_input_lowercase = text_input.value.toLowerCase();
     var input = text_input_lowercase.split(" ");
     var description = document.getElementById("scene-description");
-    var command_history = document.getElementById("command-history");
+    var command_history = document.getElementById("command-history-container");
     switch(input[0]){
         case actions.look:{
         switch(locations.current_location){
@@ -540,44 +540,26 @@ function checkInput(){
             }
         }
         break;
-        }
+        };
         case actions.open:{
             switch(locations.current_location){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door.name:{
-                            if(character.hands_free == false){
-                                description.innerHTML += descriptions.action_description.hands_free.hands_full;
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == false && character.hands_free == false){
-                                description.innerHTML = descriptions.action_description.home.my_room.open.door_locked;
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == false && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
-                            } else if (scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == false && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_quilt_blanket);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == false && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow_blanket);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == true && inventory.blanket.taken == true && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_quilt);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == true && inventory.blanket.taken == false && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_blanket);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true && inventory.pillow.taken == false && inventory.blanket.taken == true && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == false && inventory.pillow.taken == false && inventory.blanket.taken == true && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open_with_pillow_quilt);
-                            } else if(scenes.scene.home.my_room.door.name_unlocked == true && inventory.quilt.taken == true  && inventory.pillow.taken == true && inventory.blanket.taken == true && character.hands_free == true){
-                                actions.open_door.my_bedroom_door(locations.home.my_room.minimap_image.door_open);
-                            } 
+                            if(character.hands_free == false){description.innerHTML += descriptions.action_description.hands_free.hands_full;}
+                            else if(scenes.scene.home.my_room.door_unlocked == false){description.innerHTML += descriptions.action_description.home.my_room.open.door_locked;}
+                            else if(scenes.scene.home.my_room.door_unlocked == true){description.innerHTML += descriptions.action_description.home.my_room.open.door_unlocked;}
                             break;
-                        }
+                        };
                         default:{
                             description.innerHTML += "Open what?";
-                        }
-                    }
+                        };
+                    };
                     break;
                 }
-            }
+            };
             break;
-        }
+        };
         case actions.take:{
             switch(locations.current_location){
                 case locations.home.my_room:{
@@ -786,7 +768,7 @@ function checkInput(){
                         case scenes.scene.home.bedroom_hallway.living_room_door.cardinal_direction:{
                             locations.set_current_location(locations.home.living_room);
                             minimap.draw_minimap(locations.home.living_room.minimap_image.default);
-                            console.log("I am running");
+                            console.log("");
                             break;
                         }
                     }
@@ -797,7 +779,7 @@ function checkInput(){
                         case scenes.scene.home.living_room.bedroom_hallway_door.cardinal_direction:{
                             locations.set_current_location(locations.home.bedroom_hallway);
                             minimap.draw_minimap(locations.home.bedroom_hallway.minimap_image.default);
-                            console.log("I am running");
+                            console.log("I am in the living room.");
                             break;
                         }
                     }
@@ -809,12 +791,20 @@ function checkInput(){
         default:{
             description.innerHTML += "<br>" + input + " is an invalid command";
         }
-    }
-    // command_history.innerHTML += text_input.value + "<br>";
-    // console.log(command_history.childElementCount);
-    // if(command_history.childElementCount > 20){
-    //     command_history.removeChild(command_history.children[0]);
-    // }
+    };
+    function insert_command_history(input){
+        let newLine = document.createElement("span");
+        let newLineContent = document.createTextNode(input);
+        //Resets Element scroll position to bottom after every input
+        command_history.scrollTop = command_history.scrollHeight;
+        newLine.appendChild(newLineContent);
+        command_history.insertAdjacentElement("beforeend", newLine);
+        console.log(command_history.childElementCount);
+        if(command_history.childElementCount > 20){
+            command_history.removeChild(command_history.children[0]);
+        };
+    };
+    insert_command_history(text_input.value);
     text_input.value = "";
 };
 //Capitalize Function
@@ -826,79 +816,73 @@ function capitalize(string)
 function getSVG(){
     //Get Object containing SVG
     var minimap_svg = document.getElementById("minimap-container");
-    console.log(minimap_svg);
     //Get DOM of Object
     var minimap_svg_get = minimap_svg.contentDocument;
-    console.log(minimap_svg_get);
     //Get SVG ID of Object DOM
     var minimap_document = minimap_svg_get.getElementById("minimap");
-    console.log(minimap_document);
-    console.log(minimap_document.children);
+    // console.log(minimap_svg);
+    // console.log(minimap_svg_get);
+    // console.log(minimap_document);
+    // console.log(minimap_document.children);
     //Loop through all first level children of Object DOM
     for(let i = 0; i < minimap_document.children.length; i++){
         if(minimap_document.children[i].id == "bed-frame"){
             var bedframe = minimap_document.getElementById("bed-frame");
-            console.log("bedframe found.");
-            console.log(scenes.scene.home.my_room.bed.svg);
+            // console.log("bedframe found.");
         } else if (minimap_document.children[i].id == "bedroom-door"){
             var bedroom_door = minimap_document.getElementById("bedroom-door");
-            console.log("bedroom door found.");
-            console.log(scenes.scene.home.my_room.door.svg);
+            // console.log("bedroom door found.");
         } else if(minimap_document.children[i].id == "pillows"){
             var pillows = minimap_document.getElementById("pillows");
-            console.log("pillows found.");
+            // console.log("pillows found.");
             for(let i = 0; i < pillows.children.length; i++){
                 if(pillows.children[i].id == "pillow-1"){
                     var pillow_1 = minimap_document.getElementById("pillow-1");
-                    console.log("pillow-1 found.");
+                    // console.log("pillow-1 found.");
                 }
                 else if(pillows.children[i].id == "pillow-2"){
                     var pillow_2 = minimap_document.getElementById("pillow-2");
-                    console.log("pillow-2 found.");
+                    // console.log("pillow-2 found.");
                 }
             }
         } else if(minimap_document.children[i].id == "quilt"){
             var quilt = minimap_document.getElementById("quilt");
-            console.log("quilt found.");
+            // console.log("quilt found.");
         }
     };
 };
 //Onload Function looking for Object Sub-Document DOM
 window.onload = function(){
     var minimap_svg = document.getElementById("minimap-container");
-    console.log(minimap_svg);
     var minimap_svg_get = minimap_svg.contentDocument;
-    console.log(minimap_svg_get);
     var minimap_document = minimap_svg_get.getElementById("minimap");
-    console.log(minimap_document);
-    console.log(minimap_document.children);
+    //console.log(minimap_svg);
+    //console.log(minimap_svg_get);
+    // console.log(minimap_document);
+    // console.log(minimap_document.children);
     for(let i = 0; i < minimap_document.children.length; i++){
         if(minimap_document.children[i].id == "bed-frame"){
-            scenes.scene.home.my_room.bed.svg = minimap_document.getElementById("bed-frame");
-            console.log("bedframe found.");
-            console.log(scenes.scene.home.my_room.bed.svg);
+            var bedframe = minimap_document.getElementById("bed-frame");
+            // console.log("bedframe found.");
         } else if (minimap_document.children[i].id == "bedroom-door"){
-            scenes.scene.home.my_room.door.svg = minimap_document.getElementById("bedroom-door");
-            console.log("bedroom door found.");
-            console.log(scenes.scene.home.my_room.door.svg);
+            var bedroom_door = minimap_document.getElementById("bedroom-door");
+            // console.log("bedroom door found.");
         } else if(minimap_document.children[i].id == "pillows"){
             var pillows = minimap_document.getElementById("pillows");
-            console.log("pillows found.");
+            // console.log("pillows found.");
             for(let i = 0; i < pillows.children.length; i++){
                 if(pillows.children[i].id == "pillow-1"){
                     var pillow_1 = minimap_document.getElementById("pillow-1");
-                    console.log("pillow-1 found.");
-                    return pillow_1;
+                    // console.log("pillow-1 found.");
                 }
                 else if(pillows.children[i].id == "pillow-2"){
                     var pillow_2 = minimap_document.getElementById("pillow-2");
-                    console.log("pillow-2 found.");
-                    return pillow_2;
+                    // console.log("pillow-2 found.");
                 }
             }
         } else if(minimap_document.children[i].id == "quilt"){
             var quilt = minimap_document.getElementById("quilt");
-            console.log("quilt found.");
+            // console.log("quilt found.");
         }
     };
 };
