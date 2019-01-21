@@ -12,6 +12,10 @@ const character = {
     hands_free: true,
     encumbered: false,
     has_bag: false,
+    item_in_hand: {
+        right: null,
+        left: null,
+    },
     stats: {
         health: {
             element: document.getElementById("health"),
@@ -155,7 +159,6 @@ const descriptions =  {
                 } else {
                     descriptions.description_element.innerHTML += "That item's already in the bag!";
                 }
-                
             },
             take_out: function(item_name, item_in_bag_relation){
                 if(item_in_bag_relation == true){
@@ -169,8 +172,8 @@ const descriptions =  {
         home:{
             my_room:{
                 open:{
-                    door_locked: "You try to open the door by turning knob and pulling.<br> It won't budge an inch.<br>",
-                    door_unlocked: "You try to open the door by turning the knob and pulling.<br> It swings open easily.<br>"
+                    door_locked: "<br>You try to open the door by turning knob and pulling.<br> It won't budge an inch.<br>",
+                    door_unlocked: "<br>You try to open the door by turning the knob and pulling.<br> It swings open easily.<br>"
                 },
                 unlock:{
                     unlock_door: "You hear a click as you turn the lock to unlock the door."
@@ -263,6 +266,9 @@ const commands = {
     unlock: "unlock",
     grab: "grab",
     push: "push",
+    put: {
+        name: "put"
+    },
     investigation:{
         search: "search",
         examine: "examine"
@@ -276,12 +282,13 @@ const commands = {
     joining: {
         at: "at",
         to: "to",
-        through: "through"
+        through: "through",
+        in: "in"
     },
     open_door:{
         my_bedroom_door: function(minimap_image){
             descriptions.description_element.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
-            scenes.scene.home.my_room.door.name_open = true;
+            scenes.scene.home.my_room.door.door_open = true;
             minimap.draw_minimap(minimap_image);
         }
     }
@@ -291,22 +298,28 @@ const inventory = {
     pillow: {
         name: "pillow",
         taken: false,
+        in_bag: false,
         description: descriptions.look_description.home.my_room.items.pillow
     },
     blanket:{
         name: "blanket",
         taken: false,
+        in_bag: false,
         description: descriptions.look_description.home.my_room.items.blanket
     },
     quilt:{
         name: "quilt",
         taken: false,
+        in_bag: false,
         description: descriptions.look_description.home.my_room.items.quilt
     },
     bag:{
         name: "bag",
         taken: false,
-        description: descriptions.look_description.home.living_room.items.bag
+        description: descriptions.look_description.home.living_room.items.bag,
+        bag_inventory:{
+            items: []
+        },
     },
     commands:{
         take_item: function take_item(item_name){
@@ -350,6 +363,31 @@ const inventory = {
                     }
                 }
             };
+        },
+        in_bag_check(item_name){
+            var in_bag_status;
+            if(item_name == inventory.pillow.name){
+                in_bag_status == inventory.pillow.in_bag;
+                return in_bag_status;
+            } else if(item_name == inventory.quilt.name){
+                in_bag_status == inventory.quilt.in_bag;
+                return in_bag_status;
+            } else if(item_name == inventory.blanket.name){
+                in_bag_status == inventory.blanket.in_bag;
+                return in_bag_status;
+            }
+        },
+        left_hand_take: function(item_name){
+            descriptions.description_element += "You pick up " + item_name + " with your left hand.<br>";
+            character.item_in_hand.left = item_name;
+            // Debug
+            console.log(character.item_in_hand.left + " in left hand.");
+        },
+        right_hand_take: function(item_name){
+            descriptions.description_element += "You pick up " + item_name + " with your right hand.<br>";
+            character.item_in_hand.right = item_name;
+            // Debug
+            console.log(character.item_in_hand.right + " in right hand.");
         },
         drop_item: function drop_item(item_name){
             var minimap_svg = document.getElementById("minimap-container");
@@ -398,7 +436,13 @@ const inventory = {
                 this.take_item(inventory.pillow.name);
                 let item_name = capitalize(inventory.pillow.name);
                 this.create_inventory_item(item_name);
-                character.hands_free = false;
+                if(character.item_in_hand.right == null)
+                {
+                    inventory.commands.right_hand_take(inventory.pillow.name);
+                } else if (character.item_in_hand.left == null && character.item_in_hand.right != null){
+                    inventory.commands.left_hand_take(inventory.pillow.name);
+                    character.hands_free = false;
+                }
                 inventory.pillow.taken = true;
                 // Debug
                 console.log("I am running");
@@ -411,7 +455,13 @@ const inventory = {
             if(inventory.blanket.taken == false){
                 descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.blanket;
                 this.take_item(inventory.blanket.name);
-                character.hands_free = false;
+                if(character.item_in_hand.right == null)
+                {
+                    inventory.commands.right_hand_take(inventory.blanket.name);
+                } else if (character.item_in_hand.left == null && character.item_in_hand.right != null){
+                    inventory.commands.left_hand_take(inventory.blanket.name);
+                    character.hands_free = false;
+                }
                 let item_name = capitalize(inventory.blanket.name);
                 this.create_inventory_item(item_name);
                 inventory.blanket.taken = true;
@@ -426,7 +476,13 @@ const inventory = {
             if(inventory.quilt.taken == false){
                 descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.quilt;
                 this.take_item(inventory.quilt.name);
-                character.hands_free = false;
+                if(character.item_in_hand.right == null)
+                {
+                    inventory.commands.right_hand_take(inventory.quilt.name);
+                } else if (character.item_in_hand.left == null && character.item_in_hand.right != null){
+                    inventory.commands.left_hand_take(inventory.quilt.name);
+                    character.hands_free = false;
+                }
                 let item_name = capitalize(inventory.quilt.name);
                 this.create_inventory_item(item_name);
                 inventory.quilt.taken = true;
@@ -438,7 +494,26 @@ const inventory = {
         },
         take_bag: function(){
             this.take_item(inventory.bag.name);
-            character.hands_free = false;
+        },
+        put_in_bag: function(item_name){
+            for(let i = 0; i < inventory.bag.bag_inventory.items.length; i++){
+                if(inventory.bag.bag_inventory.items[i] == item_name
+                    && character.item_in_hand.right == item_name){
+                        console.log("right hand free.");
+                        character.item_in_hand.right = null;
+                        inventory.bag.bag_inventory.items.push(item_name);
+                        descriptions.description_element += descriptions.action_description.bag_commands.put_in(item_name, inventory.commands.in_bag_check(item_name));
+                } else if (inventory.bag.bag_inventory.items[i] == item_name
+                    && character.item_in_hand.left == item_name){
+                        console.log("left hand free.");
+                        character.item_in_hand.left = null;
+                        inventory.bag.bag_inventory.items.push(item_name);
+                        descriptions.description_element += descriptions.action_description.bag_commands.put_in(item_name, inventory.commands.in_bag_check(item_name));
+                }
+                else if(character.item_in_hand.right != null && character.item_in_hand.left != null){
+                    descriptions.description_element += "You have nothing in your hands to put away!";
+                }
+            }
         }
     }
 };
@@ -558,13 +633,20 @@ function checkInput(){
                 case locations.home.my_room:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door.name:{
-                            if(character.hands_free == false){description.innerHTML += descriptions.action_description.hands_free.hands_full;}
-                            else if(scenes.scene.home.my_room.door_unlocked == false){description.innerHTML += descriptions.action_description.home.my_room.open.door_locked;}
-                            else if(scenes.scene.home.my_room.door_unlocked == true){description.innerHTML += descriptions.action_description.home.my_room.open.door_unlocked;}
+                            // if(character.hands_free == false){description.innerHTML += descriptions.action_description.hands_free.hands_full;}
+                            // else 
+                            if(scenes.scene.home.my_room.door_unlocked == false)
+                            {
+                                description.innerHTML += descriptions.action_description.home.my_room.open.door_locked;
+                            }
+                            else if(scenes.scene.home.my_room.door_unlocked == true)
+                            {
+                                description.innerHTML += descriptions.action_description.home.my_room.open.door_unlocked;
+                            }
                             break;
                         };
                         default:{
-                            description.innerHTML += "Open what?";
+                            description.innerHTML += "<br>Open what?";
                         };
                     };
                     break;
@@ -618,11 +700,11 @@ function checkInput(){
                     switch(input[1]){
                         case scenes.scene.home.my_room.door.name:{
                             description.innerHTML += descriptions.action_description.home.my_room.unlock.unlock_door;
-                            scenes.scene.home.my_room.door.name_unlocked = true;
+                            scenes.scene.home.my_room.door_unlocked = true;
                             break;
                         }
                         default:{
-                            description.innerHTML += "Unlock what?";
+                            description.innerHTML += "<br>Unlock what?";
                         }
                     }
                     break;
@@ -712,18 +794,61 @@ function checkInput(){
             }
             break;
         }
+        case commands.put.name:{
+            if(inventory.bag.taken == true){
+                if(input[1] == inventory.pillow.name){
+                    if(input[2] == commands.joining.in){
+                        if(input[3] == inventory.bag.name){
+                            inventory.commands.put_in_bag(inventory.pillow.name);
+                        } else {
+                            descriptions.description_element += "Put " + inventory.pillow.name + " in what?<br>";
+                        }
+                    } else {
+                        descriptions.description_element += "Put " + inventory.pillow.name + " where?<br>";
+                    };
+                } else if(input[1] == inventory.quilt.name){
+                    if(input[2] == commands.joining.in){
+                        if(input[3] == inventory.bag.name){
+                            inventory.commands.put_in_bag(inventory.quilt.name);
+                        } else {
+                            descriptions.description_element += "Put " + inventory.quilt.name + " in what?<br>";
+                        }
+                    } else {
+                        descriptions.description_element += "Put " + inventory.quilt.name + " where?<br>";
+                    };
+                } else if(input[1] == inventory.blanket.name){
+                    if(input[2] == commands.joining.in){
+                        if(input[3] == inventory.bag.name){
+                            inventory.commands.put_in_bag(inventory.blanket.name);
+                        } else {
+                            descriptions.description_element += "Put " + inventory.blanket.name + " in what?<br>";
+                        }
+                    } else {
+                        descriptions.description_element += "Put " + inventory.blanket.name + " where?<br>";
+                    };
+                }
+            } else {
+                descriptions.description_element += "You need to have a bag first!";
+            }
+            break;
+        }
         default:{
-            description.innerHTML += "<br>" + input + " is an invalid command";
+            description.innerHTML += input + " is an invalid command<br>";
         }
     };
     function insert_command_history(input){
+        //Inserts new span element
         let newLine = document.createElement("span");
         let newLineContent = document.createTextNode(input);
-        //Resets Element scroll position to bottom after every input
-        command_history.scrollTop = command_history.scrollHeight;
         newLine.appendChild(newLineContent);
         command_history.insertAdjacentElement("beforeend", newLine);
-        console.log(command_history.childElementCount);
+        //Resets Element scroll position to bottom after every input
+        command_history.scrollTop = command_history.scrollHeight;
+        // Debug
+        // console.log("OffsetHeight is: " + command_history.offsetHeight);
+        // console.log("clientHeight is: " + command_history.clientHeight);
+        // console.log("scrollHeight is: " + command_history.scrollHeight);
+        //console.log(command_history.childElementCount);
         if(command_history.childElementCount > 20){
             command_history.removeChild(command_history.children[0]);
         };
