@@ -269,6 +269,12 @@ const commands = {
     put: {
         name: "put"
     },
+    save: {
+        name: "save"
+    },
+    load:{
+        name: "load"
+    },
     investigation:{
         search: "search",
         examine: "examine"
@@ -299,23 +305,27 @@ const inventory = {
         name: "pillow",
         taken: false,
         in_bag: false,
+        in_hand: false,
         description: descriptions.look_description.home.my_room.items.pillow
     },
     blanket:{
         name: "blanket",
         taken: false,
         in_bag: false,
+        in_hand: false,
         description: descriptions.look_description.home.my_room.items.blanket
     },
     quilt:{
         name: "quilt",
         taken: false,
         in_bag: false,
+        in_hand: false,
         description: descriptions.look_description.home.my_room.items.quilt
     },
     bag:{
         name: "bag",
         taken: false,
+        in_hand: false,
         description: descriptions.look_description.home.living_room.items.bag,
         bag_inventory:{
             items: []
@@ -844,6 +854,14 @@ function checkInput(){
             }
             break;
         }
+        case commands.save.name:{
+            save_game();
+            break;
+        }
+        case commands.load.name:{
+            load_game();
+            break;
+        }
         default:{
             description.innerHTML += input + " is an invalid command<br>";
         }
@@ -969,25 +987,43 @@ function change_svg(){
 };
 function save_game(){
     if(inventory.pillow.taken == true){
-        save.inventory.pillow = true;
+        for(i in inventory.pillow){
+            if(inventory.pillow[i] == inventory.pillow.in_hand)
+            {save.inventory.pillow.in_hand = inventory.pillow[i];};
+            if(inventory.pillow[i] == inventory.pillow.in_bag)
+            {save.inventory.pillow.in_bag = inventory.pillow[i];};
+        };
     };
     if(inventory.blanket.taken == true){
-        save.inventory.blanket = true;
+        for(i in inventory.blanket){
+            if(inventory.blanket[i] == inventory.blanket.in_hand)
+            {save.inventory.blanket.in_hand = inventory.blanket[i];};
+            if(inventory.blanket[i] == inventory.blanket.in_bag)
+            {save.inventory.blanket.in_bag = inventory.blanket[i];};
+        };
     };
     if(inventory.quilt.taken == true){
-        save.inventory.quilt == true;
+        for(i in inventory.quilt){
+            if(inventory.quilt[i] == inventory.quilt.in_hand)
+            {save.inventory.quilt.in_hand = inventory.quilt[i];};
+            if(inventory.quilt[i] == inventory.quilt.in_bag)
+            {save.inventory.quilt.in_bag = inventory.quilt[i];};
+        };
     };
     if(inventory.bag.taken == true){
-        save.inventory.bag = true;
+        for(i in inventory.bag){
+            if(inventory.bag[i] == inventory.bag.in_hand)
+            {save.inventory.bag.in_hand = inventory.bag[i];};
+        };
     };
     var save = {
         character: character.name,
         current_location: locations.current_location,
         inventory: {
-            pillow: false,
-            blanket: false,
-            quilt: false,
-            bag: false
+            pillow: {in_bag: false, in_hand: false},
+            blanket: {in_bag: false, in_hand: false},
+            quilt: {in_bag: false, in_hand: false},
+            bag: {in_hand: false}
         }
     };
     localStorage.setItem("save", JSON.stringify(save));
@@ -997,12 +1033,15 @@ function load_game(){
 
     if(game_save != null && game_save != undefined){
         character.name = game_save.character;
-        inventory.bag.taken = save.inventory.bag;
-        inventory.blanket.taken = save.inventory.blanket;
-        inventory.quilt.taken = save.inventory.quilt;
-        inventory.pillow.taken = save.inventory.pillow;
-    }
-}
+        inventory.bag.in_hand = save.inventory.bag.in_hand;
+        inventory.blanket.in_hand = save.inventory.blanket.in_hand;
+        inventory.blanket.in_bag = save.inventory.blanket.in_bag;
+        inventory.quilt.in_hand = save.inventory.quilt.in_hand;
+        inventory.quilt.in_bag = save.inventory.quilt.in_bag;
+        inventory.pillow.in_hand = save.inventory.pillow.in_hand;
+        inventory.pillow.in_bag = save.inventory.pillow.in_bag;
+    };
+};
 window.addEventListener("resize", scene_description_container_width);
 window.addEventListener("load", scene_description_container_width);
 window.addEventListener("load", load_document);
