@@ -321,6 +321,12 @@ const inventory = {
             items: []
         },
     },
+    current_inventory:{
+        pillow: false,
+        blanket: false,
+        quilt: false,
+        bag: false
+    },
     commands:{
         take_item: function take_item(item_name){
             var minimap_svg = document.getElementById("minimap-container");
@@ -432,18 +438,24 @@ const inventory = {
         take_pillow: function(/*minimap_image*/){
             //minimap.draw_minimap(minimap_image);
             if(inventory.pillow.taken == false){
-                descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.pillow;
-                this.take_item(inventory.pillow.name);
-                let item_name = capitalize(inventory.pillow.name);
-                this.create_inventory_item(item_name);
                 if(character.item_in_hand.right == null)
                 {
                     inventory.commands.right_hand_take(inventory.pillow.name);
+                    descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.pillow;
+                    this.take_item(inventory.pillow.name);
+                    let item_name = capitalize(inventory.pillow.name);
+                    this.create_inventory_item(item_name);
+                    inventory.pillow.taken = true;
+
                 } else if (character.item_in_hand.left == null && character.item_in_hand.right != null){
                     inventory.commands.left_hand_take(inventory.pillow.name);
+                    descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.pillow;
+                    this.take_item(inventory.pillow.name);
+                    let item_name = capitalize(inventory.pillow.name);
+                    this.create_inventory_item(item_name);
                     character.hands_free = false;
+                    inventory.pillow.taken = true;
                 }
-                inventory.pillow.taken = true;
                 // Debug
                 console.log("I am running");
                 console.log("pillow taken: " + inventory.pillow.taken + " quilt taken: " + inventory.quilt.taken + " blanket taken: " + inventory.blanket.taken);
@@ -954,6 +966,42 @@ function scene_description_container_width(){
 };
 function change_svg(){
     console.log(subdoc);
+};
+function save_game(){
+    if(inventory.pillow.taken == true){
+        save.inventory.pillow = true;
+    };
+    if(inventory.blanket.taken == true){
+        save.inventory.blanket = true;
+    };
+    if(inventory.quilt.taken == true){
+        save.inventory.quilt == true;
+    };
+    if(inventory.bag.taken == true){
+        save.inventory.bag = true;
+    };
+    var save = {
+        character: character.name,
+        current_location: locations.current_location,
+        inventory: {
+            pillow: false,
+            blanket: false,
+            quilt: false,
+            bag: false
+        }
+    };
+    localStorage.setItem("save", JSON.stringify(save));
+};
+function load_game(){
+    var game_save = JSON.parse(localStorage.getItem("save"));
+
+    if(game_save != null && game_save != undefined){
+        character.name = game_save.character;
+        inventory.bag.taken = save.inventory.bag;
+        inventory.blanket.taken = save.inventory.blanket;
+        inventory.quilt.taken = save.inventory.quilt;
+        inventory.pillow.taken = save.inventory.pillow;
+    }
 }
 window.addEventListener("resize", scene_description_container_width);
 window.addEventListener("load", scene_description_container_width);
