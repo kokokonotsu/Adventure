@@ -1,4 +1,5 @@
-
+importScripts("node_modules/pegjs/lib/peg.js");
+const parser = PEG.generate("start = ('look' / 'open' / 'attack' / 'talk' / 'take' / 'unlock' / 'grab' / 'push' / 'put' / 'save' / 'load'/ 'search' / 'examine' / 'move' / 'go' / 'leave'), joining = ('run' / 'at' / 'to' / 'through' / 'in'), +");
 const character = {
     name: "Protagonist",
     equipped: {
