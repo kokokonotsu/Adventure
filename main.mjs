@@ -964,10 +964,10 @@ window.onload = function(){
             // console.log("quilt found.");
         }
     };
+    typeWriter(story_dialogue.home.start);
 };
 //Load in content on Window Load Function
 function load_document (){
-    document.getElementById("scene-description").innerHTML = story_dialogue.home.start;
     character.display_stats();
     character.display_character_profile(character.character_profile.character_profile_image);
     minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
@@ -981,6 +981,20 @@ function scene_description_container_width(){
     scene_description_container.style.width = scene_description_container_width_variable + "px";
     console.log(document_width);
     console.log(scene_description_container_width_variable);
+};
+for(let i = 0; i < story_dialogue.home.start.length; i++){
+    setTimeout(()=>{console.log(story_dialogue.home.start.charAt(i));}, 100);
+}
+function typeWriter(message) {
+    console.log("I am running.");
+    var i = 0;
+    var speed = 100; /* The speed/duration of the effect in milliseconds */
+    if (i < message.length) {
+        descriptions.description_element.innerHTML += message.charAt(i);
+        console.log(message.charAt(i));
+        i++;
+        setTimeout(typeWriter, speed);
+    };
 };
 function change_svg(){
     console.log(subdoc);
