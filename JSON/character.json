@@ -1,0 +1,38 @@
+{
+    "character": {
+        "name": "Protagonist",
+        "equipped": {
+            "hands": { "is_full": false, "currently_equipped": null },
+            "head": {"is_full": false, "currently_equipped": null },
+            "arms": {"is_full": false, "currently_equipped": null },
+            "torso": {"is_full": false, "currently_equipped": null },
+            "legs": {"is_full": false, "currently_equipped": null },
+            "feet": {"is_full": false, "currently_equipped": null }
+        },
+        "hands_free": true,
+        "encumbered": false,
+        "has_bag": false,
+        "item_in_hand": {
+            "right": null,
+            "left": null
+        },
+        "stats": {
+            "health": {
+                "element": "document.getElementById('health')",
+                "value": 100
+            },
+            "defense": {
+                "element": "document.getElementById('defense')",
+                "value": 0
+            },
+            "magic": {
+                "element": "document.getElementById('magic')",
+                "value": 0
+            },
+            "money": {
+                "element": "document.getElementById('money')",
+                "value": 10
+            }
+        }
+    }
+}

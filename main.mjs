@@ -1,5 +1,5 @@
-importScripts("node_modules/pegjs/lib/peg.js");
-const parser = PEG.generate("start = ('look' / 'open' / 'attack' / 'talk' / 'take' / 'unlock' / 'grab' / 'push' / 'put' / 'save' / 'load'/ 'search' / 'examine' / 'move' / 'go' / 'leave'), joining = ('run' / 'at' / 'to' / 'through' / 'in'), +");
+//importScripts("node_modules/pegjs/lib/peg.js");
+//const parser = PEG.generate("start = ('look' / 'open' / 'attack' / 'talk' / 'take' / 'unlock' / 'grab' / 'push' / 'put' / 'save' / 'load'/ 'search' / 'examine' / 'move' / 'go' / 'leave'), joining = ('run' / 'at' / 'to' / 'through' / 'in'), +");
 const character = {
     name: "Protagonist",
     equipped: {
@@ -983,18 +983,29 @@ function scene_description_container_width(){
     console.log(document_width);
     console.log(scene_description_container_width_variable);
 };
-for(let i = 0; i < story_dialogue.home.start.length; i++){
-    setTimeout(()=>{console.log(story_dialogue.home.start.charAt(i));}, 100);
-}
-function typeWriter(message) {
-    console.log("I am running.");
-    var i = 0;
-    var speed = 100; /* The speed/duration of the effect in milliseconds */
-    if (i < message.length) {
-        descriptions.description_element.innerHTML += message.charAt(i);
-        console.log(message.charAt(i));
-        i++;
-        setTimeout(typeWriter, speed);
+// Debug
+// for(let i = 0; i < story_dialogue.home.start.length; i++){
+//     setTimeout(()=>{console.log(story_dialogue.home.start.charAt(i));}, 100);
+// }
+function typeWriter(message){
+    var i = 0; //Initialize the counter variable for typeWriterStart
+    var j = 0; //Initialize the counter variable for message_split
+    var message_split = message.split("<br>");
+    typeWriterStart();
+    function typeWriterStart() {
+        var speed = 50; /* The speed/duration of the effect in milliseconds */
+        if (j <= message_split.length) {
+            if(i < message_split[j].length){
+                descriptions.description_element.innerHTML += message_split[j].charAt(i); //Point to the character in the string at position 'i'
+                i++; //Increment 'i' to pass the pointer in the string to the next character
+                setTimeout(typeWriterStart, speed); //Restart Function to place next character in 'text'
+            } else if (i >= message_split[j].length){
+                i = 0; //Reset typing counter for next line
+                j++; //Increment Index position of message_split
+                setTimeout(typeWriterStart, speed); //Restart Function to place next character in 'text'
+            } 
+        }
+        else if (j > message_split.length){ /* Nothing is purposefully here to stop this function from continuing */};
     };
 };
 function change_svg(){
