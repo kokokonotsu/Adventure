@@ -94,7 +94,7 @@ main{
     margin-inline-end: 0;
     margin-inline-start: 0;
     display: inline-block;
-    text-align: center;
+    /* text-align: center; */
     font-size: 1.2em;
 }
 #scene-description b{
@@ -275,6 +275,20 @@ main{
 #inventory li span{
     display: inline;
     padding: 1px;
+}
+#blinking-cursor{
+    font-weight: 100;
+    font-size: 1.5rem;
+    animation: 1s blink step-end infinite;
+    visibility: hidden;
+}
+@keyframes blink{
+    from, to{
+        color: transparent;
+    }
+    50%{
+        color: var(--font-color);
+    }
 }
 /* Classes */
 .overflow-auto{

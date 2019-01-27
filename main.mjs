@@ -223,7 +223,7 @@ const story_dialogue = {
         You are lying on a bed in a decently sized room.<br>
         This is your home.<br>
         You fell asleep last night after putting your younger siblings to bed, and now you awaken from your sleep, just the same as every other day.<br>
-        Time to get to work.<br>`
+        Time to get to work.`
     }
 };
 const scenes = {
@@ -671,7 +671,7 @@ function checkInput(){
                             break;
                         };
                         default:{
-                            description.innerHTML += "<br>Open what?";
+                            description.innerHTML += "Open what?";
                         };
                     };
                     break;
@@ -689,7 +689,7 @@ function checkInput(){
                             else if(inventory.pillow.taken == false && character.hands_free == false)
                             {description.innerHTML += "You already have something in your hands!";}
                             else if(inventory.pillow.taken == true)
-                            {description.innerHTML += "<br>You've already taken this item.<br>";};
+                            {description.innerHTML += "You've already taken this item.";};
                             break;
                         }
                         case scenes.scene.home.my_room.items.quilt.name:{
@@ -699,7 +699,7 @@ function checkInput(){
                             else if(inventory.quilt.taken == false && character.hands_free == false)
                             {description.innerHTML += "You already have something in your hands!";}
                             else if(inventory.quilt.taken == true)
-                            {description.innerHTML += "<br>You've already taken this item.<br>";};
+                            {description.innerHTML += "You've already taken this item.";};
                             break;
                         }
                         case scenes.scene.home.my_room.items.blanket.name:{
@@ -708,11 +708,11 @@ function checkInput(){
                             else if(inventory.blanket.taken == false && character.hands_free == false)
                             {description.innerHTML += "You already have something in your hands!";}
                             else if(inventory.blanket.taken == true)
-                            {description.innerHTML += "<br>You've already taken this item.<br>";};
+                            {description.innerHTML += "You've already taken this item.<br>";};
                             break;
                         }
                         default:{
-                            description.innerHTML += "<br>There's nothing there to take.<br>";
+                            description.innerHTML += "There's nothing there to take.";
                         }
                     }
                 }
@@ -826,30 +826,30 @@ function checkInput(){
                         if(input[3] == inventory.bag.name){
                             inventory.commands.put_in_bag(inventory.pillow.name);
                         } else {
-                            descriptions.description_element += "Put " + inventory.pillow.name + " in what?<br>";
+                            descriptions.description_element += "Put " + inventory.pillow.name + " in what?";
                         }
                     } else {
-                        descriptions.description_element += "Put " + inventory.pillow.name + " where?<br>";
+                        descriptions.description_element += "Put " + inventory.pillow.name + " where?";
                     };
                 } else if(input[1] == inventory.quilt.name){
                     if(input[2] == commands.joining.in){
                         if(input[3] == inventory.bag.name){
                             inventory.commands.put_in_bag(inventory.quilt.name);
                         } else {
-                            descriptions.description_element += "Put " + inventory.quilt.name + " in what?<br>";
+                            descriptions.description_element += "Put " + inventory.quilt.name + " in what?";
                         }
                     } else {
-                        descriptions.description_element += "Put " + inventory.quilt.name + " where?<br>";
+                        descriptions.description_element += "Put " + inventory.quilt.name + " where?";
                     };
                 } else if(input[1] == inventory.blanket.name){
                     if(input[2] == commands.joining.in){
                         if(input[3] == inventory.bag.name){
                             inventory.commands.put_in_bag(inventory.blanket.name);
                         } else {
-                            descriptions.description_element += "Put " + inventory.blanket.name + " in what?<br>";
+                            descriptions.description_element += "Put " + inventory.blanket.name + " in what?";
                         }
                     } else {
-                        descriptions.description_element += "Put " + inventory.blanket.name + " where?<br>";
+                        descriptions.description_element += "Put " + inventory.blanket.name + " where?";
                     };
                 }
             } else {
@@ -890,10 +890,7 @@ function checkInput(){
     text_input.value = "";
 };
 //Capitalize Function
-function capitalize(string) 
-{
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+function capitalize(string){ return string.charAt(0).toUpperCase() + string.slice(1); };
 //Get SVG DOM Function
 function getSVG(){
     //Get Object containing SVG
@@ -989,19 +986,28 @@ function typeWriter(message, restart){
     var i = 0; //Initialize the counter variable for typeWriterStart
     var j = 0; //Initialize the counter variable for message_split
     var newNode = document.createElement("span");
+    var blinking_cursor = document.createElement("span");
+    var cursor = document.createTextNode("|");
+    blinking_cursor.id = "blinking-cursor";
+    blinking_cursor.appendChild(cursor);
     if(restart == true){
         if(descriptions.description_element.children[0]){
             descriptions.description_element.removeChild(descriptions.description_element.children[0]);
+            descriptions.description_element.removeChild(descriptions.description_element.children[1]);            
         }
         descriptions.description_element.appendChild(newNode);
+        descriptions.description_element.appendChild(blinking_cursor);
+        blinking_cursor.style.visibility = "visible";
     };
-    console.log(message);
     var message_split = message.split("<br>");
-    console.log(message_split);
+    // Debug
+    // console.log(message);
+    // Debug
+    // console.log(message_split);
     checkRestart();
     function typeWriterStart(text){
         var speed = 50; /* The speed/duration of the effect in milliseconds */
-        if (text[j] == undefined){ return };
+        if (text[j] == undefined){  blinking_cursor.style.visibility = "hidden"; return };
         if (j <= text.length){
             if(i < text[j].length){
                 newNode.innerHTML += text[j].charAt(i); //Point to the character in the string at position 'i'
