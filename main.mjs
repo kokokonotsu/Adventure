@@ -155,18 +155,20 @@ const descriptions =  {
         bag_commands:{
             put_in: function(item_name, item_in_bag_relation){
                 if(item_in_bag_relation == false){
-                    descriptions.description_element.innerHTML += "You put " + item_name + " into the bag.";
+                    var description_message = "You put " + item_name + " into the bag.";
+                    typeWriter(description_message, true);
                     item_in_bag_relation = true;
                 } else {
-                    descriptions.description_element.innerHTML += "That item's already in the bag!";
+                    typeWriter("That item's already in the bag!");
                 }
             },
             take_out: function(item_name, item_in_bag_relation){
                 if(item_in_bag_relation == true){
-                    descriptions.description_element.innerHTML += "You take " + item_name + " out of the bag.";
+                    var description_message = "You take " + item_name + " out of the bag.";
+                    typeWriter(description_message, true);
                     item_in_bag_relation = false;
                 } else {
-                    descriptions.description_element.innerHTML += "That item's not in the bag!";
+                    typeWriter("That item's not in the bag!", true);
                 }
             }
         },
@@ -294,7 +296,7 @@ const commands = {
     },
     open_door:{
         my_bedroom_door: function(minimap_image){
-            descriptions.description_element.innerHTML = descriptions.action_description.home.my_room.open.door_unlocked;
+            typeWriter(descriptions.action_description.home.my_room.open.door_unlocked, true);
             scenes.scene.home.my_room.door.door_open = true;
             minimap.draw_minimap(minimap_image);
         }
@@ -452,7 +454,7 @@ const inventory = {
                 if(character.item_in_hand.right == null)
                 {
                     inventory.commands.right_hand_take(inventory.pillow.name);
-                    descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.pillow;
+                    typeWriter(descriptions.action_description.home.my_room.take.pillow, true);
                     this.take_item(inventory.pillow.name);
                     let item_name = capitalize(inventory.pillow.name);
                     this.create_inventory_item(item_name);
@@ -460,7 +462,7 @@ const inventory = {
 
                 } else if (character.item_in_hand.left == null && character.item_in_hand.right != null){
                     inventory.commands.left_hand_take(inventory.pillow.name);
-                    descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.pillow;
+                    typeWriter(descriptions.action_description.home.my_room.take.pillow, true);
                     this.take_item(inventory.pillow.name);
                     let item_name = capitalize(inventory.pillow.name);
                     this.create_inventory_item(item_name);
@@ -476,7 +478,7 @@ const inventory = {
         take_blanket: function(/*minimap_image*/){
             //minimap.draw_minimap(minimap_image);
             if(inventory.blanket.taken == false){
-                descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.blanket;
+                typeWriter(descriptions.action_description.home.my_room.take.blanket, true);
                 this.take_item(inventory.blanket.name);
                 if(character.item_in_hand.right == null)
                 {
@@ -497,7 +499,7 @@ const inventory = {
         take_quilt: function(/*minimap_image*/){
             //minimap.draw_minimap(minimap_image);
             if(inventory.quilt.taken == false){
-                descriptions.description_element.innerHTML += descriptions.action_description.home.my_room.take.quilt;
+                typeWriter(descriptions.action_description.home.my_room.take.quilt, true);
                 this.take_item(inventory.quilt.name);
                 if(character.item_in_hand.right == null)
                 {
@@ -525,16 +527,16 @@ const inventory = {
                         console.log("right hand free.");
                         character.item_in_hand.right = null;
                         inventory.bag.bag_inventory.items.push(item_name);
-                        descriptions.description_element += descriptions.action_description.bag_commands.put_in(item_name, inventory.commands.in_bag_check(item_name));
+                        descriptions.action_description.bag_commands.put_in(item_name, inventory.commands.in_bag_check(item_name));
                 } else if (inventory.bag.bag_inventory.items[i] == item_name
                     && character.item_in_hand.left == item_name){
                         console.log("left hand free.");
                         character.item_in_hand.left = null;
                         inventory.bag.bag_inventory.items.push(item_name);
-                        descriptions.description_element += descriptions.action_description.bag_commands.put_in(item_name, inventory.commands.in_bag_check(item_name));
+                        descriptions.action_description.bag_commands.put_in(item_name, inventory.commands.in_bag_check(item_name));
                 }
                 else if(character.item_in_hand.right != null && character.item_in_hand.left != null){
-                    descriptions.description_element += "You have nothing in your hands to put away!";
+                    typeWriter("You have nothing in your hands to put away!", true);
                 }
             }
         }
@@ -558,63 +560,63 @@ function checkInput(){
                         if(input[2] == scenes.scene.home.my_room.bed.name){
                             //Debug
                             //console.log(input[2]);
-                            description.innerHTML = descriptions.look_description.home.my_room.bed;
+                            typeWriter(descriptions.look_description.home.my_room.bed, true);
                             break;
                         } else if (input[2] == scenes.scene.home.my_room.door.name && scenes.scene.home.my_room.door.name){
                             if(scenes.scene.home.my_room.door.name_unlocked == false && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML = descriptions.look_description.home.my_room.door_locked_closed;
+                                typeWriter(descriptions.look_description.home.my_room.door_locked_closed, true);
                             } else if (scenes.scene.home.my_room.door.name_unlocked == true && scenes.scene.home.my_room.door.name_open == false){
-                                description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_closed;
+                                typeWriter(descriptions.look_description.home.my_room.door_unlocked_closed, true);
                             } else if (scenes.scene.home.my_room.door.name_unlocked == true && scenes.scene.home.my_room.door.name_open == true){
-                                description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_opened;
+                                typeWriter(descriptions.look_description.home.my_room.door_unlocked_opened, true);
                             }
                             break;
                         } else if(input[2] == scenes.scene.home.my_room.window.name){
-                            description.innerHTML = descriptions.look_description.home.my_room.window;
+                            typeWriter(descriptions.look_description.home.my_room.window, true);
                             break;
                         } else {
-                            description.innerHTML = "Nothing to look at.";
+                            typeWriter("Nothing to look at.", true);
                             //Debug
                             //console.log(input[2]);
                             break;
                         }
                     }
                     case locations.current_room:{
-                        description.innerHTML += descriptions.look_description.home.my_room.look;
+                        typeWriter(descriptions.look_description.home.my_room.look, true);
                         break;
                     }
                     case scenes.scene.home.my_room.window.name:{
-                        description.innerHTML = descriptions.look_description.home.my_room.window;
+                        typeWriter(descriptions.look_description.home.my_room.window, true);
                         break;
                     }
                     case scenes.scene.home.my_room.window.cardinal_direction:{
-                        description.innerHTML = descriptions.look_description.home.my_room.window;
+                        typeWriter(descriptions.look_description.home.my_room.window, true);
                         break;
                     }
                     case scenes.scene.home.my_room.bed.name:{
-                        description.innerHTML = descriptions.look_description.home.my_room.bed;
+                        typeWriter(descriptions.look_description.home.my_room.bed, true);
                         break;
                     }
                     case scenes.scene.home.my_room.door.name:{
                         if(scenes.scene.home.my_room.door_unlocked == false){
-                            description.innerHTML = descriptions.look_description.home.my_room.door_locked_closed;
+                            typeWriter(descriptions.look_description.home.my_room.door_locked_closed, true);
                         } else if (scenes.scene.home.my_room.door_unlocked == true && scenes.scene.home.my_room.door_open == false){
-                            description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_closed;
+                            typeWriter(descriptions.look_description.home.my_room.door_unlocked_closed, true);
                         } else if (scenes.scene.home.my_room.door_unlocked == true && scenes.scene.home.my_room.door_open == true){
-                            description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_opened;
+                            typeWriter(descriptions.look_description.home.my_room.door_unlocked_opened, true);
                         }
                         break;
                     }
                     case scenes.scene.home.my_room.door.cardinal_direction:{
                         if(scenes.scene.home.my_room.door_unlocked == false){
-                            description.innerHTML = descriptions.look_description.home.my_room.door_locked_closed;
+                            typeWriter(descriptions.look_description.home.my_room.door_locked_closed, true);
                         } else if (scenes.scene.home.my_room.door_unlocked == true){
-                            description.innerHTML = descriptions.look_description.home.my_room.door_unlocked_closed;
+                            typeWriter(descriptions.look_description.home.my_room.door_unlocked_closed, true);
                         }
                         break;
                     }
                     default:{
-                        description.innerHTML = "Look at what?";
+                        typeWriter("Look at what?", true);
                     }
                 }
                 break;
@@ -965,7 +967,7 @@ window.onload = function(){
             // console.log("quilt found.");
         }
     };
-    typeWriter(story_dialogue.home.start);
+    typeWriter(story_dialogue.home.start, true);
 };
 //Load in content on Window Load Function
 function load_document (){
@@ -983,29 +985,46 @@ function scene_description_container_width(){
     console.log(document_width);
     console.log(scene_description_container_width_variable);
 };
-// Debug
-// for(let i = 0; i < story_dialogue.home.start.length; i++){
-//     setTimeout(()=>{console.log(story_dialogue.home.start.charAt(i));}, 100);
-// }
-function typeWriter(message){
+function typeWriter(message, restart){
     var i = 0; //Initialize the counter variable for typeWriterStart
     var j = 0; //Initialize the counter variable for message_split
+    var newNode = document.createElement("span");
+    if(restart == true){
+        if(descriptions.description_element.children[0]){
+            descriptions.description_element.removeChild(descriptions.description_element.children[0]);
+        }
+        descriptions.description_element.appendChild(newNode);
+    };
+    console.log(message);
     var message_split = message.split("<br>");
-    typeWriterStart();
-    function typeWriterStart() {
+    console.log(message_split);
+    checkRestart();
+    function typeWriterStart(text){
         var speed = 50; /* The speed/duration of the effect in milliseconds */
-        if (j <= message_split.length) {
-            if(i < message_split[j].length){
-                descriptions.description_element.innerHTML += message_split[j].charAt(i); //Point to the character in the string at position 'i'
+        if (text[j] == undefined){ return };
+        if (j <= text.length){
+            if(i < text[j].length){
+                newNode.innerHTML += text[j].charAt(i); //Point to the character in the string at position 'i'
                 i++; //Increment 'i' to pass the pointer in the string to the next character
-                setTimeout(typeWriterStart, speed); //Restart Function to place next character in 'text'
-            } else if (i >= message_split[j].length){
+                setTimeout(() => { return typeWriterStart(text) }, speed); //Restart Function to place next character in 'text'
+            } else if (i >= text[j].length){
+                let lineBreak = document.createElement("br");
+                newNode.insertAdjacentElement("beforeend", lineBreak);
                 i = 0; //Reset typing counter for next line
                 j++; //Increment Index position of message_split
-                setTimeout(typeWriterStart, speed); //Restart Function to place next character in 'text'
-            } 
+                setTimeout(() => { return typeWriterStart(text) }, speed); //Restart Function to place next character in 'text'
+            };
+        };
+    };
+    function checkRestart(){
+        if(restart == true){
+            i = 0;
+            j = 0;
+            descriptions.description_element.innerHTML == "";
+            return typeWriterStart(message_split);
+        } else {
+            return;
         }
-        else if (j > message_split.length){ /* Nothing is purposefully here to stop this function from continuing */};
     };
 };
 function change_svg(){
