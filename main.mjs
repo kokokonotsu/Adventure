@@ -992,8 +992,8 @@ function typeWriter(message, restart){
     blinking_cursor.appendChild(cursor);
     if(restart == true){
         if(descriptions.description_element.children[0]){
-            descriptions.description_element.removeChild(descriptions.description_element.children[0]);
-            descriptions.description_element.removeChild(descriptions.description_element.children[1]);            
+            descriptions.description_element.removeChild(newNode);
+            descriptions.description_element.removeChild(blinking_cursor);            
         }
         descriptions.description_element.appendChild(newNode);
         descriptions.description_element.appendChild(blinking_cursor);
