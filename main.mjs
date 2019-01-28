@@ -175,8 +175,8 @@ const descriptions =  {
         home:{
             my_room:{
                 open:{
-                    door_locked: "<br>You try to open the door by turning knob and pulling.<br> It won't budge an inch.<br>",
-                    door_unlocked: "<br>You try to open the door by turning the knob and pulling.<br> It swings open easily.<br>"
+                    door_locked: "You try to open the door by turning knob and pulling.<br> It won't budge an inch.<br>",
+                    door_unlocked: "You try to open the door by turning the knob and pulling.<br> It swings open easily.<br>"
                 },
                 unlock:{
                     unlock_door: "You hear a click as you turn the lock to unlock the door."
@@ -232,10 +232,10 @@ const scenes = {
             my_room:{
                 look: descriptions.look_description.home.my_room.look,
                 bed: { name: "bed", svg: null },
-                door: { name: "door", cardinal_direction: "west", svg: null },
-                window: { name: "window", cardinal_direction: "east", svg: null},
+                door: { name: "door", cardinal_direction: "west", svg: null, door_open: false },
+                window: { name: "window", cardinal_direction: "east", svg: null },
                 door_unlocked: false,
-                door_open: false,
+                
                 items:{
                     pillow: { name: "pillow", svg: null },
                     quilt: { name: "quilt", svg: null },
@@ -551,7 +551,7 @@ function checkInput(){
     switch(input[0]){
         case commands.look.name:{
         switch(locations.current_location){
-            case locations.home.my_room:{
+            case locations.home.my_room.name:{
                 description.innerHTML = "";
                 switch(input[1]){
                     case commands.joining.at:{
@@ -563,11 +563,11 @@ function checkInput(){
                             typeWriter(descriptions.look_description.home.my_room.bed, true);
                             break;
                         } else if (input[2] == scenes.scene.home.my_room.door.name && scenes.scene.home.my_room.door.name){
-                            if(scenes.scene.home.my_room.door.name_unlocked == false && scenes.scene.home.my_room.door.name_open == false){
+                            if(scenes.scene.home.my_room.door.name_unlocked == false && scenes.scene.home.my_room.door.door_open == false){
                                 typeWriter(descriptions.look_description.home.my_room.door_locked_closed, true);
-                            } else if (scenes.scene.home.my_room.door.name_unlocked == true && scenes.scene.home.my_room.door.name_open == false){
+                            } else if (scenes.scene.home.my_room.door.name_unlocked == true && scenes.scene.home.my_room.door.door_open == false){
                                 typeWriter(descriptions.look_description.home.my_room.door_unlocked_closed, true);
-                            } else if (scenes.scene.home.my_room.door.name_unlocked == true && scenes.scene.home.my_room.door.name_open == true){
+                            } else if (scenes.scene.home.my_room.door.name_unlocked == true && scenes.scene.home.my_room.door.door_open == true){
                                 typeWriter(descriptions.look_description.home.my_room.door_unlocked_opened, true);
                             }
                             break;
@@ -655,7 +655,7 @@ function checkInput(){
         };
         case commands.open:{
             switch(locations.current_location){
-                case locations.home.my_room:{
+                case locations.home.my_room.name:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door.name:{
                             // if(character.hands_free == false){description.innerHTML += descriptions.action_description.hands_free.hands_full;}
@@ -667,6 +667,7 @@ function checkInput(){
                             else if(scenes.scene.home.my_room.door_unlocked == true)
                             {
                                 typeWriter(descriptions.action_description.home.my_room.open.door_unlocked, true);
+                                scenes.scene.home.my_room.door.door_open = true;
                             }
                             break;
                         };
@@ -681,7 +682,7 @@ function checkInput(){
         };
         case commands.take:{
             switch(locations.current_location){
-                case locations.home.my_room:{
+                case locations.home.my_room.name:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.items.pillow.name:{
                             if(inventory.pillow.taken == false && character.hands_free == true)
@@ -720,7 +721,7 @@ function checkInput(){
         }
         case commands.unlock:{
             switch(locations.current_location){
-                case locations.home.my_room:{
+                case locations.home.my_room.name:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door.name:{
                             typeWriter(descriptions.action_description.home.my_room.unlock.unlock_door, true);
@@ -738,28 +739,28 @@ function checkInput(){
         }
         case commands.movement.go:{
             switch(locations.current_location){
-                case locations.home.my_room:{
+                case locations.home.my_room.name:{
                     switch(input[1]){
                         case scenes.scene.home.my_room.door.name:{
-                            if(scenes.scene.home.my_room.door.name_open == true){
-                                locations.set_current_location(locations.home.bedroom_hallway);
+                            if(scenes.scene.home.my_room.door.door_open == true){
+                                locations.set_current_location(locations.home.bedroom_hallway.name);
                                 if(locations.home.bedroom_hallway.visited == false){ locations.home.bedroom_hallway.visited = true; };
                                 typeWriter(descriptions.look_description.home.bedroom_hallway.look, true);
                                 minimap.draw_minimap(locations.home.bedroom_hallway.minimap_image.default);
                                 console.log("Hallway visited: " + locations.home.bedroom_hallway.visited);
-                            } else if (scenes.scene.home.my_room.door.name_open == false){
+                            } else if (scenes.scene.home.my_room.door.door_open == false){
                                 typeWriter(descriptions.look_description.home.my_room.door_closed_message, true);
                             }
                             break;
                         }
                         case scenes.scene.home.my_room.door.cardinal_direction:{
-                            if(scenes.scene.home.my_room.door.name_open == true){
-                                locations.set_current_location(locations.home.bedroom_hallway);
+                            if(scenes.scene.home.my_room.door.door_open == true){
+                                locations.set_current_location(locations.home.bedroom_hallway.name);
                                 if(locations.home.bedroom_hallway.visited == false){ locations.home.bedroom_hallway.visited = true; };
                                 typeWriter(descriptions.look_description.home.bedroom_hallway.look, true);
                                 minimap.draw_minimap(locations.home.bedroom_hallway.minimap_image.default);
                                 console.log("Hallway visited: " + locations.home.bedroom_hallway.visited);
-                            } else if (scenes.scene.home.my_room.door.name_open == false){
+                            } else if (scenes.scene.home.my_room.door.door_open == false){
                                 typeWriter(descriptions.look_description.home.my_room.door_closed_message, true);
                                 console.log("I am running");
                             }
@@ -771,10 +772,10 @@ function checkInput(){
                     }
                     break;
                 }
-                case locations.home.bedroom_hallway:{
+                case locations.home.bedroom_hallway.name:{
                     switch(input[1]){
                         case scenes.scene.home.bedroom_hallway.my_bedroom_door.cardinal_direction:{
-                            locations.set_current_location(locations.home.my_room);
+                            locations.set_current_location(locations.home.my_room.name);
                             if(inventory.pillow.taken == false && inventory.blanket.taken == false && inventory.quilt.taken == false){
                                 minimap.draw_minimap(locations.home.my_room.minimap_image.door_open_with_pillow_quilt_blanket);
                                 console.log("Current location is: " + locations.current_location);
@@ -803,7 +804,7 @@ function checkInput(){
                             break;
                         }
                         case scenes.scene.home.bedroom_hallway.living_room_door.cardinal_direction:{
-                            locations.set_current_location(locations.home.living_room);
+                            locations.set_current_location(locations.home.living_room.name);
                             minimap.draw_minimap(locations.home.living_room.minimap_image.default);
                             console.log("Current location is: " + locations.current_location);
                             break;
@@ -811,10 +812,10 @@ function checkInput(){
                     }
                     break;
                 }
-                case locations.home.living_room:{
+                case locations.home.living_room.name:{
                     switch(input[1]){
                         case scenes.scene.home.living_room.bedroom_hallway_door.cardinal_direction:{
-                            locations.set_current_location(locations.home.bedroom_hallway);
+                            locations.set_current_location(locations.home.bedroom_hallway.name);
                             minimap.draw_minimap(locations.home.bedroom_hallway.minimap_image.default);
                             console.log("Current location is: " + locations.current_location);
                             break;
@@ -977,7 +978,7 @@ function load_document (){
     character.display_stats();
     character.display_character_profile(character.character_profile.character_profile_image);
     minimap.draw_minimap(locations.home.my_room.minimap_image.door_closed_with_pillow_quilt_blanket);
-    locations.current_location = locations.home.my_room;
+    locations.current_location = locations.home.my_room.name;
 };
 const scene_description_container = document.getElementById("scene-description-container");
 var document_width;
